@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Artificial Wug Rate</title>
+
+    <!-- libraries required for jsPsych plugins -->
+    <script src="js/jspsych-6.0.5/jspsych.js"></script>
+    <script src="js/jspsych-6.0.5/plugins/jspsych-html-keyboard-response.js"></script>
+    <script src="js/jspsych-6.0.5/plugins/jspsych-instructions.js"></script>
+
+    <!-- libraries required for YAML parsing -->
+    <script src="js/yaml.js" type="text/javascript"></script>
+
+    <!-- stylesheets for making everything pretty -->
+    <link href="js/jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+
+  </head>
+
+  <!-- the body -- this is where the experiment gets displayed -->
+  <body></body>
+
+  <!-- the javascript that runs the experiment -->
+  <script>
+  /* load the paramter file as object and save in variable */
+  var PARAMS = YAML.load('params.yaml')
+
+  // setup subject data
+  //jsPysch.data.addProperties({condition: "No separate condition"});
+
+  // setup main experment instructions
+  var instructions_main = {
+    type: 'instructions',
+    pages: PARAMS.instructions.main.pages,
+    show_clickable_nav: PARAMS.instructions.main.show_clickable_nav
+  }
+
+  var exposure = {
+    type: 'audio-keyboard-response',
+    timeline: PARAMS.exposure.timeline,
+    choices: PARAMS.exposure.choices,
+    prompt: PARAMS.exposure.prompt
+  }
+
+  jsPsych.init({
+    fullscreen: PARAMS.experiment_wide.fullscreen,
+    show_progress_bar: PARAMS.experiment_wide.show_progress_bar,
+    timeline: [
+      instructions_main
+    ],
+    on_finish: function(){jsPsych.data.displayData();}
+  })
+
+  </script>
+</html>

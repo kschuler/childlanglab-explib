@@ -1,0 +1,88 @@
+---
+# Experiment-wide parameters
+experiment_wide:
+  fullscreen: false
+  show_progress_bar: true
+  images_to_preload: None
+  sounds_to_preload:
+    - 'static/sounds/exposure-5sec.wav'
+    - 'static/sounds/budopa.wav'
+    - 'static/sounds/pabiku.wav'
+  show_preload_progress_bar: true
+  online: false
+
+# ---------------- INSTRUCTIONS PARAMETERS --------------------#
+
+instructions:
+  main:
+    timing_post_trial: 100
+    data: {phase: 'instructions_main'}
+    pages:
+      - >
+        <div><h1 class='center-content'>Welcome to the experiment</h1>
+        <h4 class='center-content'>Please read these instructions carefully</h4>
+        <p class='center-content'>In this experiment, you will hear a long stream of sounds.  All you need to do for this part of the experiment is listen to the sounds. Try to pay attention to the stream of sounds, because you will be tested on it later.</p>
+        <h4 class='center-content'>Press the 'next' button when you are ready to begin.</h4></div>
+      - >
+        <figure>
+        <img src='https://ungiornoperdonare.it/wp-content/themes/dazzling-child/assets/images/user-icon.png' alt='missing' />
+        <figcaption><strong>Open position</strong>
+        <br>Programmer</figcaption>
+        </figure>
+    key_forward: 'rightarrow'
+    key_backward: 'leftarrow'
+    allow_backward: true
+    allow_keys: false
+    show_clickable_nav: true
+  exposure:
+    timing_post_trial: 100
+    data: {phase: 'instructions_main'}
+    pages:
+      - >
+        <p class='center-content'>Please read these instructions carefully</p>
+        <p >For this test, you will hear some combinations of sounds.  Please rate (from 1 to 5) how familiar each sound combination seems to you based on the streams you just heard.   If the sound combination is definitely familiar, you should rate it as a 5.  If the sound combination is definitely unfamiliar, you should rate it as a 1.  You can use the whole scale from 1 to 5.  You will click on the number that corresponds to your judgment.</p>
+        <h4 class='center-content'>Press next when you are ready to begin.</h4>
+    key_forward: 'rightarrow'
+    key_backward: 'leftarrow'
+    allow_backward: true
+    allow_keys: true
+    show_clickable_nav: true
+  test:
+    timing_post_trial: 100
+    data: {phase: 'instructions_main'}
+    pages:
+      - >
+        <h1 class='center-content'>Get ready for the test</h1>
+        <h4 class='center-content'>Please read these instructions carefully</h4>
+        <p class='center-content'>For this test, you will hear some combinations of sounds.  Please rate (from 1 to 5) how familiar each sound combination seems to you based on the streams you just heard.   If the sound combination is definitely familiar, you should rate it as a 5.  If the sound combination is definitely unfamiliar, you should rate it as a 1.  You can use the whole scale from 1 to 5.  You will click on the number that corresponds to your judgment.</p>
+        <h4 class='center-content'>Press the 'next' button when you are ready to begin.</h4>    key_forward: 'rightarrow'
+    key_backward: 'leftarrow'
+    allow_backward: true
+    allow_keys: true
+    show_clickable_nav: true
+
+# ---------------- EXPOSURE PARAMETERS --------------------#
+# participants are asked to listen carefully to a stream of sounds; in the
+# in-lab version, they only have to listen.  Online, we really need to
+# have some way of tracking their attention.
+exposure:
+  stimulus: 'static/sounds/exposure-5sec.wav'
+  trial_ends_after_audio: true
+
+# ---------------- TEST PARAMETERS --------------------#
+# participants are asked to rate (on a scale, set below)
+test:
+  timeline:
+    - {stimulus: 'static/sounds/bikuti.wav', data: {soundtype: 'bikuti', wordtype: 'word'}}
+    - {stimulus: 'static/sounds/pabiku.wav', data: {soundtype: 'pabiku', wordtype: 'part-word'}}
+  post_trial_gap: 200
+  choices:
+    - '1'
+    - '2'
+    - '3'
+    - '4'
+    - '5'
+  prompt: 'How familiar is this sound combination ?'
+  response_ends_trial: true
+
+# ---------------- DEMOGRAPHIC QUESTIONS PARAMETERS ---------#
