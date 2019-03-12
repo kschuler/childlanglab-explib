@@ -11,3 +11,5 @@ search_enabled: false
 aux_links:
   "Visit our public website":
     - "//kschuler.github.io/childlanglab"
+  "Visit our wiki":
+    - "//kschuler.github.io/childlanglabwiki"
