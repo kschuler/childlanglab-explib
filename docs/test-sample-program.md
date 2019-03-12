@@ -2,6 +2,7 @@
 layout: default
 title: Test Sample Program
 nav_order: 1
+permalink: /docs
 ---
 
 
