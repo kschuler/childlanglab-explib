@@ -1,3 +1,8 @@
+---
+layout: default
+title: Bo test
+nav_order: 1
+---
 # Documentation for Experiment Library
 
 ```
