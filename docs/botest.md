@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Bo test
-nav_order: 2
+nav_order: 21
+permalink: /docs
 ---
 # Documentation for Experiment Library
 
@@ -19,7 +20,7 @@ welcome:
      stimulus: "Welcome to the experiment. Press any key to begin."
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4MTQ2Mzk4NiwtMTA1OTQzNzU3MywyOT
-Y2NTI0NzMsMTc4ODc5NTQ3NSwtMTk2MDcyNDM0NCwxNzg2MDU4
-NTUzXX0=
+eyJoaXN0b3J5IjpbLTczOTM2NTE0MCwxNTgxNDYzOTg2LC0xMD
+U5NDM3NTczLDI5NjY1MjQ3MywxNzg4Nzk1NDc1LC0xOTYwNzI0
+MzQ0LDE3ODYwNTg1NTNdfQ==
 -->
