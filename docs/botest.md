@@ -2,7 +2,6 @@
 layout: default
 title: Bo test
 nav_order: 21
-permalink: /docs
 ---
 # Documentation for Experiment Library
 
