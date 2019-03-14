@@ -21,14 +21,14 @@ These headings will be `inline-block`:
 ```
 ### Read Me
 This is a documentation for experiment-labaray. There are three files in this experiment library file. 
-1. exp
+1. experiment
 ```
 welcome:
      stimulus: "Welcome to the experiment. Press any key to begin."
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTA1ODMwNDIsLTQ5MTYzNTQ3OSwtMT
-k0MDY5MjE0MCwtODY0MzAzMDUxLC03MzkzNjUxNDAsMTU4MTQ2
-Mzk4NiwtMTA1OTQzNzU3MywyOTY2NTI0NzMsMTc4ODc5NTQ3NS
-wtMTk2MDcyNDM0NCwxNzg2MDU4NTUzXX0=
+eyJoaXN0b3J5IjpbMTYwOTI5NzE1MCwtNDkxNjM1NDc5LC0xOT
+QwNjkyMTQwLC04NjQzMDMwNTEsLTczOTM2NTE0MCwxNTgxNDYz
+OTg2LC0xMDU5NDM3NTczLDI5NjY1MjQ3MywxNzg4Nzk1NDc1LC
+0xOTYwNzI0MzQ0LDE3ODYwNTg1NTNdfQ==
 -->
