@@ -1,9 +1,9 @@
 ---
 layout: default
-title:  Documentation for Experiment Library
+title:  Documentation for Simple Experiment
 nav_order: 21
 ---
-# Documentation for Experiment Library
+# Documentation for Simple Experiment
 
 [comment] This documentation is hosted in Github: https://github.com/kschuler/experiment-library/tree/master/demo-experiment-simple-RA
 [comment] Visted this documentation: http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RA/readme.html
@@ -19,7 +19,7 @@ welcome:
      stimulus: "Welcome to the experiment. Press any key to begin."
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxMTUwNjE3OCwtMTc1NTE2MDEwNiw5OT
+eyJoaXN0b3J5IjpbLTMyNzAwMjQ3OCwtMTc1NTE2MDEwNiw5OT
 cwODA4MjIsMTE4OTk4MDczNCwxNjA5Mjk3MTUwLC00OTE2MzU0
 NzksLTE5NDA2OTIxNDAsLTg2NDMwMzA1MSwtNzM5MzY1MTQwLD
 E1ODE0NjM5ODYsLTEwNTk0Mzc1NzMsMjk2NjUyNDczLDE3ODg3
