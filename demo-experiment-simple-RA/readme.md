@@ -10,19 +10,19 @@ nav_order: 21
 
 
 ### Read Me
-This is a demo documentation for **simple experiment. The structure of this simple expemiment:
+This is a demo documentation for **simple** experiment. The structure of this **simple** expemiment:
 
-1. demo-experiment-simple-RT
-2. 
+1. HTML file: demo-experiment-simple-RT.html
+2. JavaScript file: js/
 ```
 welcome:
      stimulus: "Welcome to the experiment. Press any key to begin."
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjM0MjQ2MDQ0LC03MDgzNjkyMDcsLTE3NT
-UxNjAxMDYsOTk3MDgwODIyLDExODk5ODA3MzQsMTYwOTI5NzE1
-MCwtNDkxNjM1NDc5LC0xOTQwNjkyMTQwLC04NjQzMDMwNTEsLT
-czOTM2NTE0MCwxNTgxNDYzOTg2LC0xMDU5NDM3NTczLDI5NjY1
-MjQ3MywxNzg4Nzk1NDc1LC0xOTYwNzI0MzQ0LDE3ODYwNTg1NT
-NdfQ==
+eyJoaXN0b3J5IjpbMTM1NDE4NzMzOSwtNzA4MzY5MjA3LC0xNz
+U1MTYwMTA2LDk5NzA4MDgyMiwxMTg5OTgwNzM0LDE2MDkyOTcx
+NTAsLTQ5MTYzNTQ3OSwtMTk0MDY5MjE0MCwtODY0MzAzMDUxLC
+03MzkzNjUxNDAsMTU4MTQ2Mzk4NiwtMTA1OTQzNzU3MywyOTY2
+NTI0NzMsMTc4ODc5NTQ3NSwtMTk2MDcyNDM0NCwxNzg2MDU4NT
+UzXX0=
 -->
