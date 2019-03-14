@@ -5,9 +5,8 @@ nav_order: 21
 ---
 # Documentation for Simple Experiment
 
-*This documentation is hosted in [GitHub]https://github.com/kschuler/experiment-library/tree/master/demo-experiment-simple-RA)
-*Visted this [Documentation](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RA/readme.html
-)
+*This documentation is hosted in [GitHub](https://github.com/kschuler/experiment-library/tree/master/demo-experiment-simple-RA)
+*Visted this [Documentation](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RA/readme.html)
 
 ### Read Me
 This is a demo documentation for **simple** experiment. The structure of this **simple** expemiment:
@@ -26,11 +25,11 @@ welcome:
      stimulus: "Welcome to the experiment. Press any key to begin."
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0ODE4OTU3OSwtMTI5ODY2ODA3MSw5MT
-Q5MDIyODIsMTkxNzg1MDk0OSwtNzA4MzY5MjA3LC0xNzU1MTYw
-MTA2LDk5NzA4MDgyMiwxMTg5OTgwNzM0LDE2MDkyOTcxNTAsLT
-Q5MTYzNTQ3OSwtMTk0MDY5MjE0MCwtODY0MzAzMDUxLC03Mzkz
-NjUxNDAsMTU4MTQ2Mzk4NiwtMTA1OTQzNzU3MywyOTY2NTI0Nz
-MsMTc4ODc5NTQ3NSwtMTk2MDcyNDM0NCwxNzg2MDU4NTUzXX0=
+eyJoaXN0b3J5IjpbLTIwODQ2NTU2NDcsLTEyOTg2NjgwNzEsOT
+E0OTAyMjgyLDE5MTc4NTA5NDksLTcwODM2OTIwNywtMTc1NTE2
+MDEwNiw5OTcwODA4MjIsMTE4OTk4MDczNCwxNjA5Mjk3MTUwLC
+00OTE2MzU0NzksLTE5NDA2OTIxNDAsLTg2NDMwMzA1MSwtNzM5
+MzY1MTQwLDE1ODE0NjM5ODYsLTEwNTk0Mzc1NzMsMjk2NjUyND
+czLDE3ODg3OTU0NzUsLTE5NjA3MjQzNDQsMTc4NjA1ODU1M119
 
 -->
