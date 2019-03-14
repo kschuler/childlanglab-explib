@@ -13,13 +13,14 @@ nav_order: 21
 This is a demo documentation for **simple** experiment. The structure of this **simple** expemiment:
 
 1. HTML file: demo-experiment-simple-RT.html
-2. JavaScript file: js/
+2. JavaScript file: js/jspsych-6.0.5/jspsych.js and 
+3. 
 ```
 welcome:
      stimulus: "Welcome to the experiment. Press any key to begin."
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1NDE4NzMzOSwtNzA4MzY5MjA3LC0xNz
+eyJoaXN0b3J5IjpbMTkxNzg1MDk0OSwtNzA4MzY5MjA3LC0xNz
 U1MTYwMTA2LDk5NzA4MDgyMiwxMTg5OTgwNzM0LDE2MDkyOTcx
 NTAsLTQ5MTYzNTQ3OSwtMTk0MDY5MjE0MCwtODY0MzAzMDUxLC
 03MzkzNjUxNDAsMTU4MTQ2Mzk4NiwtMTA1OTQzNzU3MywyOTY2
