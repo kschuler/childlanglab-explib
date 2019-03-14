@@ -10,7 +10,7 @@ nav_order: 21
 
 
 ### Read Me
-This is a demo documentation for simple experiment. The structure of this expemiment-libarary:
+This is a demo documentation for **simple experiment. The structure of this simple expemiment:
 
 1. demo-experiment-simple-RT
 2. 
@@ -19,9 +19,10 @@ welcome:
      stimulus: "Welcome to the experiment. Press any key to begin."
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcwODM2OTIwNywtMTc1NTE2MDEwNiw5OT
-cwODA4MjIsMTE4OTk4MDczNCwxNjA5Mjk3MTUwLC00OTE2MzU0
-NzksLTE5NDA2OTIxNDAsLTg2NDMwMzA1MSwtNzM5MzY1MTQwLD
-E1ODE0NjM5ODYsLTEwNTk0Mzc1NzMsMjk2NjUyNDczLDE3ODg3
-OTU0NzUsLTE5NjA3MjQzNDQsMTc4NjA1ODU1M119
+eyJoaXN0b3J5IjpbNjM0MjQ2MDQ0LC03MDgzNjkyMDcsLTE3NT
+UxNjAxMDYsOTk3MDgwODIyLDExODk5ODA3MzQsMTYwOTI5NzE1
+MCwtNDkxNjM1NDc5LC0xOTQwNjkyMTQwLC04NjQzMDMwNTEsLT
+czOTM2NTE0MCwxNTgxNDYzOTg2LC0xMDU5NDM3NTczLDI5NjY1
+MjQ3MywxNzg4Nzk1NDc1LC0xOTYwNzI0MzQ0LDE3ODYwNTg1NT
+NdfQ==
 -->
