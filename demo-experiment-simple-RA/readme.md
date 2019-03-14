@@ -7,7 +7,7 @@ nav_order: 21
 
 
 ### Read Me
-This is a documentation for experiment-libarary. The structure of this expemiment-libarary. 
+This is a documentation for experiment-libarary. The structure of this expemiment-libarary:
 experiment
 1. demo-experiment-simple-RT
 2. 
@@ -16,8 +16,9 @@ welcome:
      stimulus: "Welcome to the experiment. Press any key to begin."
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4OTk4MDczNCwxNjA5Mjk3MTUwLC00OT
-E2MzU0NzksLTE5NDA2OTIxNDAsLTg2NDMwMzA1MSwtNzM5MzY1
-MTQwLDE1ODE0NjM5ODYsLTEwNTk0Mzc1NzMsMjk2NjUyNDczLD
-E3ODg3OTU0NzUsLTE5NjA3MjQzNDQsMTc4NjA1ODU1M119
+eyJoaXN0b3J5IjpbOTk3MDgwODIyLDExODk5ODA3MzQsMTYwOT
+I5NzE1MCwtNDkxNjM1NDc5LC0xOTQwNjkyMTQwLC04NjQzMDMw
+NTEsLTczOTM2NTE0MCwxNTgxNDYzOTg2LC0xMDU5NDM3NTczLD
+I5NjY1MjQ3MywxNzg4Nzk1NDc1LC0xOTYwNzI0MzQ0LDE3ODYw
+NTg1NTNdfQ==
 -->
