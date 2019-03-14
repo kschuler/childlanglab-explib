@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Documentation for Simple Experiment
+title:  Simple Experiment
 nav_order: 21
 ---
 # Documentation for Simple Experiment
@@ -45,11 +45,11 @@ instructions:
         <p>Press any key to begin.</p>
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMjk5NzIwMjMsLTU0NjI0MzU1NSwtMT
-I5ODY2ODA3MSw5MTQ5MDIyODIsMTkxNzg1MDk0OSwtNzA4MzY5
-MjA3LC0xNzU1MTYwMTA2LDk5NzA4MDgyMiwxMTg5OTgwNzM0LD
-E2MDkyOTcxNTAsLTQ5MTYzNTQ3OSwtMTk0MDY5MjE0MCwtODY0
-MzAzMDUxLC03MzkzNjUxNDAsMTU4MTQ2Mzk4NiwtMTA1OTQzNz
-U3MywyOTY2NTI0NzMsMTc4ODc5NTQ3NSwtMTk2MDcyNDM0NCwx
-Nzg2MDU4NTUzXX0=
+eyJoaXN0b3J5IjpbMTUzNzUxMTY1NCwtMTEyOTk3MjAyMywtNT
+Q2MjQzNTU1LC0xMjk4NjY4MDcxLDkxNDkwMjI4MiwxOTE3ODUw
+OTQ5LC03MDgzNjkyMDcsLTE3NTUxNjAxMDYsOTk3MDgwODIyLD
+ExODk5ODA3MzQsMTYwOTI5NzE1MCwtNDkxNjM1NDc5LC0xOTQw
+NjkyMTQwLC04NjQzMDMwNTEsLTczOTM2NTE0MCwxNTgxNDYzOT
+g2LC0xMDU5NDM3NTczLDI5NjY1MjQ3MywxNzg4Nzk1NDc1LC0x
+OTYwNzI0MzQ0XX0=
 -->
