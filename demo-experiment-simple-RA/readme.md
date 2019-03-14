@@ -9,7 +9,7 @@ nav_order: 21
 
 *Visted this [Documentation](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RA/readme.html)
 
-### Read Me
+### The structure of a behavioral experiment
 This is a demo documentation for `simple experiment`. The **structure** of this `simple expemiment`:
 
 
@@ -45,11 +45,11 @@ instructions:
         <p>Press any key to begin.</p>
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0NjI0MzU1NSwtMTI5ODY2ODA3MSw5MT
-Q5MDIyODIsMTkxNzg1MDk0OSwtNzA4MzY5MjA3LC0xNzU1MTYw
-MTA2LDk5NzA4MDgyMiwxMTg5OTgwNzM0LDE2MDkyOTcxNTAsLT
-Q5MTYzNTQ3OSwtMTk0MDY5MjE0MCwtODY0MzAzMDUxLC03Mzkz
-NjUxNDAsMTU4MTQ2Mzk4NiwtMTA1OTQzNzU3MywyOTY2NTI0Nz
-MsMTc4ODc5NTQ3NSwtMTk2MDcyNDM0NCwxNzg2MDU4NTUzXX0=
-
+eyJoaXN0b3J5IjpbMjAwMzEyMzU1NSwtNTQ2MjQzNTU1LC0xMj
+k4NjY4MDcxLDkxNDkwMjI4MiwxOTE3ODUwOTQ5LC03MDgzNjky
+MDcsLTE3NTUxNjAxMDYsOTk3MDgwODIyLDExODk5ODA3MzQsMT
+YwOTI5NzE1MCwtNDkxNjM1NDc5LC0xOTQwNjkyMTQwLC04NjQz
+MDMwNTEsLTczOTM2NTE0MCwxNTgxNDYzOTg2LC0xMDU5NDM3NT
+czLDI5NjY1MjQ3MywxNzg4Nzk1NDc1LC0xOTYwNzI0MzQ0LDE3
+ODYwNTg1NTNdfQ==
 -->
