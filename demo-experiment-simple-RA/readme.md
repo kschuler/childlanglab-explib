@@ -13,19 +13,20 @@ nav_order: 21
 This is a demo documentation for **simple** experiment. The structure of this **simple** expemiment:
 
 1. HTML file: `demo-experiment-simple-RT/demo-experiment-simple-RT.html`
-The HTML file is the skeleton of the experiment. It utilizes javaScript library such as [jsPysch](https://www.jspsych.org/) to implement the experiment. 
-And 
-3. JavaScript file: `js/jspsych-6.0.5/jspsych.js` and  `js/yaml.js`
-4. YAML file
+
+2. JavaScript file: `js/jspsych-6.0.5/jspsych.js` and  `js/yaml.js`
+3. YAML file
+Rre The HTML file is the skeleton of the experiment. It utilizes javaScript library such as [jsPysch](https://www.jspsych.org/) to implement the experiment. 
+And use YAML file to provide parmameter for 
 ```
 welcome:
      stimulus: "Welcome to the experiment. Press any key to begin."
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzg0NjUyMDEzLDE5MTc4NTA5NDksLTcwOD
-M2OTIwNywtMTc1NTE2MDEwNiw5OTcwODA4MjIsMTE4OTk4MDcz
-NCwxNjA5Mjk3MTUwLC00OTE2MzU0NzksLTE5NDA2OTIxNDAsLT
-g2NDMwMzA1MSwtNzM5MzY1MTQwLDE1ODE0NjM5ODYsLTEwNTk0
-Mzc1NzMsMjk2NjUyNDczLDE3ODg3OTU0NzUsLTE5NjA3MjQzND
-QsMTc4NjA1ODU1M119
+eyJoaXN0b3J5IjpbLTE0NzM4OTcxOSwxOTE3ODUwOTQ5LC03MD
+gzNjkyMDcsLTE3NTUxNjAxMDYsOTk3MDgwODIyLDExODk5ODA3
+MzQsMTYwOTI5NzE1MCwtNDkxNjM1NDc5LC0xOTQwNjkyMTQwLC
+04NjQzMDMwNTEsLTczOTM2NTE0MCwxNTgxNDYzOTg2LC0xMDU5
+NDM3NTczLDI5NjY1MjQ3MywxNzg4Nzk1NDc1LC0xOTYwNzI0Mz
+Q0LDE3ODYwNTg1NTNdfQ==
 -->
