@@ -19,15 +19,15 @@ This is a demo documentation for `simple experiment`. The **structure** of this 
 
 Relation: The HTML file is the skeleton of the experiment. It mainly utilizes JavaScript library  [jsPysch](https://www.jspsych.org/) to implement the interactive experiment. YAML file is to provide parameters for the skeleton of the experiment of HTML file. 
 ## How to use YAML file
-we prove an examp
-### Welcome and 
+We prove an example on how to implements the yaml file, that is, how to provide parameter for the skeleton for the experiments.
+
+### Welcome and Instruction 
 Provide welcom message on the landing page.
 ```
 welcome:
      stimulus: "Welcome to the experiment. Press any key to begin!"
 ```
-
-
+Give instessage on the landing page.
 ```
 instructions:
     stimulus: >
@@ -45,10 +45,11 @@ instructions:
         <p>Press any key to begin.</p>
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzcyOTg5MjEsLTEyOTg2NjgwNzEsOTE0OT
-AyMjgyLDE5MTc4NTA5NDksLTcwODM2OTIwNywtMTc1NTE2MDEw
-Niw5OTcwODA4MjIsMTE4OTk4MDczNCwxNjA5Mjk3MTUwLC00OT
-E2MzU0NzksLTE5NDA2OTIxNDAsLTg2NDMwMzA1MSwtNzM5MzY1
-MTQwLDE1ODE0NjM5ODYsLTEwNTk0Mzc1NzMsMjk2NjUyNDczLD
-E3ODg3OTU0NzUsLTE5NjA3MjQzNDQsMTc4NjA1ODU1M119
+eyJoaXN0b3J5IjpbLTc3NDY5NDMzMiwtMTI5ODY2ODA3MSw5MT
+Q5MDIyODIsMTkxNzg1MDk0OSwtNzA4MzY5MjA3LC0xNzU1MTYw
+MTA2LDk5NzA4MDgyMiwxMTg5OTgwNzM0LDE2MDkyOTcxNTAsLT
+Q5MTYzNTQ3OSwtMTk0MDY5MjE0MCwtODY0MzAzMDUxLC03Mzkz
+NjUxNDAsMTU4MTQ2Mzk4NiwtMTA1OTQzNzU3MywyOTY2NTI0Nz
+MsMTc4ODc5NTQ3NSwtMTk2MDcyNDM0NCwxNzg2MDU4NTUzXX0=
+
 -->
