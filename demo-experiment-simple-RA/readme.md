@@ -67,15 +67,14 @@ fixation:
     durations_possibilities: 
     # the options for random time interval between tests.
     [250, 500, 750, 1000, 1250, 1500, 1750, 2000]
-    # set the tag for fixation.
-    tag: 'fixation'
+    tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMjUzOTM0MDMsLTYxMzg3Mzk5LDIxMT
-MwODE1ODEsLTE4NTMxMDcyOTMsLTE0NTExMDEwMzMsMTA3MDU3
-OTYwLDE1Mzc1MTE2NTQsLTExMjk5NzIwMjMsLTU0NjI0MzU1NS
-wtMTI5ODY2ODA3MSw5MTQ5MDIyODIsMTkxNzg1MDk0OSwtNzA4
-MzY5MjA3LC0xNzU1MTYwMTA2LDk5NzA4MDgyMiwxMTg5OTgwNz
-M0LDE2MDkyOTcxNTAsLTQ5MTYzNTQ3OSwtMTk0MDY5MjE0MCwt
-ODY0MzAzMDUxXX0=
+eyJoaXN0b3J5IjpbLTIyODQ1MjYwMywtNjEzODczOTksMjExMz
+A4MTU4MSwtMTg1MzEwNzI5MywtMTQ1MTEwMTAzMywxMDcwNTc5
+NjAsMTUzNzUxMTY1NCwtMTEyOTk3MjAyMywtNTQ2MjQzNTU1LC
+0xMjk4NjY4MDcxLDkxNDkwMjI4MiwxOTE3ODUwOTQ5LC03MDgz
+NjkyMDcsLTE3NTUxNjAxMDYsOTk3MDgwODIyLDExODk5ODA3Mz
+QsMTYwOTI5NzE1MCwtNDkxNjM1NDc5LC0xOTQwNjkyMTQwLC04
+NjQzMDMwNTFdfQ==
 -->
