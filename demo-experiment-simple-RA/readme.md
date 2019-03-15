@@ -16,12 +16,12 @@ nav_order: 21
 * Visit this [Documentation](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RA/readme.html)
 
 
-### Goal for this Simple Experiments
+1.  Goal for this Simple Experiments
 {:toc}
 
 This simple experiment is from [jsPsych Tutorial](https://www.jspsych.org/tutorials/rt-task/). The task is to press one key for a blue colored circle and another key for an orange colored circle.
 
-1. The Structure of  the Simple Experiment
+2. The Structure of  the Simple Experiment
 {:toc}
 
 This is a demo documentation for `simple experiment`. The **structure** of this `simple expemiment`:
@@ -33,7 +33,7 @@ This is a demo documentation for `simple experiment`. The **structure** of this 
 
 The HTML file is the skeleton of the behavioral experiment. It mainly utilizes JavaScript library  [jsPysch](https://www.jspsych.org/) to implement the interactive experiment. YAML file is to provide parameters for the skeleton of the experiment of HTML file. 
 
-2. How to Modify YAML file?
+3. How to Modify YAML file?
 {: toc}
 
 We prove an example on how to implements the yaml file, that is, how to provide parameter for the skeleton for the experiments.
@@ -90,11 +90,11 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjE4MjQzMzc1LC0xOTc4MTc3MDk2LDQ0Nz
-AzMjU1OCwtMjA2OTM1OTAwNCw3NTcxMjc0OTUsLTIyODQ1MjYw
-MywtNjEzODczOTksMjExMzA4MTU4MSwtMTg1MzEwNzI5MywtMT
-Q1MTEwMTAzMywxMDcwNTc5NjAsMTUzNzUxMTY1NCwtMTEyOTk3
-MjAyMywtNTQ2MjQzNTU1LC0xMjk4NjY4MDcxLDkxNDkwMjI4Mi
-wxOTE3ODUwOTQ5LC03MDgzNjkyMDcsLTE3NTUxNjAxMDYsOTk3
-MDgwODIyXX0=
+eyJoaXN0b3J5IjpbLTEzMDIyNjg2ODksLTE5NzgxNzcwOTYsND
+Q3MDMyNTU4LC0yMDY5MzU5MDA0LDc1NzEyNzQ5NSwtMjI4NDUy
+NjAzLC02MTM4NzM5OSwyMTEzMDgxNTgxLC0xODUzMTA3MjkzLC
+0xNDUxMTAxMDMzLDEwNzA1Nzk2MCwxNTM3NTExNjU0LC0xMTI5
+OTcyMDIzLC01NDYyNDM1NTUsLTEyOTg2NjgwNzEsOTE0OTAyMj
+gyLDE5MTc4NTA5NDksLTcwODM2OTIwNywtMTc1NTE2MDEwNiw5
+OTcwODA4MjJdfQ==
 -->
