@@ -26,7 +26,7 @@ nav_order: 21
 This simple experiment is from [jsPsych Tutorial](https://www.jspsych.org/tutorials/rt-task/). The task is to press one key for a blue colored circle and another key for an orange colored circle. The **structure** of this `simple expemiment`:
 1. <span style="color:blue">*HTML file* </span>: `demo-experiment-simple-RT/demo-experiment-simple-RT.html`
 2. <span style="color:blue">*JavaScript file* </span>: `js/jspsych-6.0.5/jspsych.js` and  `js/yaml.js`, etc.
-3. <span style="color:blue">* YAML file* </span>: `demo-experiment-simple-RT/params.yaml`provides parameters for HTML file.  `params.yaml` pass parameters to `demo-experiment-simple-RT.html` through `yaml.js` .
+3. <span style="color:blue">*YAML file* </span>: `demo-experiment-simple-RT/params.yaml`provides parameters for HTML file.  `params.yaml` pass parameters to `demo-experiment-simple-RT.html` through `yaml.js` .
 
 The HTML file is the skeleton of the behavioral experiment. It mainly utilizes JavaScript library  [jsPysch](https://www.jspsych.org/) to implement the interactive experiment. YAML file is to provide parameters for the skeleton of the experiment of HTML file. 
 
@@ -87,11 +87,11 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjMxMjc4NjkzLDE1OTc2ODU2MTQsMjk5Mj
-I5MTUzLC05ODYyNTkxNjAsLTEyMDg5MDM1MjQsLTQxNzYyMzk0
-MCwtNzgwMzY3Njg0LC02OTU0NzIyMTEsLTc4MDM2NzY4NCwtND
-IwNDM1MjAwLC0yMDA4NDc1ODkwLDE5MzMxNTk4NTYsLTE1NjU2
-MTA2MjIsLTMwOTEyMTMwMSwxMzIwMjg1ODk1LDE2ODE3NzczNj
-EsMjEwMzc3MjE4MSwtMTcyMTM3OTY0NywtNDMwMTMxMTk0LC0x
-NDQ4NDU1NzUwXX0=
+eyJoaXN0b3J5IjpbLTQ1NjA3NjgyNSw2MzEyNzg2OTMsMTU5Nz
+Y4NTYxNCwyOTkyMjkxNTMsLTk4NjI1OTE2MCwtMTIwODkwMzUy
+NCwtNDE3NjIzOTQwLC03ODAzNjc2ODQsLTY5NTQ3MjIxMSwtNz
+gwMzY3Njg0LC00MjA0MzUyMDAsLTIwMDg0NzU4OTAsMTkzMzE1
+OTg1NiwtMTU2NTYxMDYyMiwtMzA5MTIxMzAxLDEzMjAyODU4OT
+UsMTY4MTc3NzM2MSwyMTAzNzcyMTgxLC0xNzIxMzc5NjQ3LC00
+MzAxMzExOTRdfQ==
 -->
