@@ -13,12 +13,12 @@ nav_order: 21
 {: .no_toc .text-delta }
 
 
-1.  ## Goal for this Simple Experiments
+1.  # Goal for this Simple Experiments
 {:toc}
 
 This simple experiment is from [jsPsych Tutorial](https://www.jspsych.org/tutorials/rt-task/). The task is to press one key for a blue colored circle and another key for an orange colored circle.
 
-2. ### The Structure of  the Simple Experiment
+2. # The Structure of  the Simple Experiment
 {:toc}
 
 This is a demo documentation for `simple experiment`. The **structure** of this `simple expemiment`:
@@ -35,7 +35,7 @@ The HTML file is the skeleton of the behavioral experiment. It mainly utilizes J
 
 We prove an example on how to implements the yaml file, that is, how to provide parameter for the skeleton for the experiments.
 
-####  Welcome and Instruction 
+##  Welcome and Instruction 
 {: toc}
 
 Provide welcom message on the landing page.
@@ -43,7 +43,7 @@ Provide welcom message on the landing page.
 welcome:
      stimulus: "Welcome to the experiment. Press any key to begin!"
 ```
-####  Give Instructions to users 
+##  Give Instructions to users 
 {: toc}
 
 Tip: use `>` to render content in one line. 
@@ -63,7 +63,7 @@ instructions:
         </div>
         <p>Press any key to begin.</p>
 ```
-#### Set Up Test Trial
+## Set Up Test Trial
 {:toc}
 
 * Define the tag for the experiments, it make your life easier when you want to calculate the test results.
@@ -87,11 +87,11 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzMDEzMTE5NCwtMTQ0ODQ1NTc1MCwtMT
-MwMjI2ODY4OSwtMTk3ODE3NzA5Niw0NDcwMzI1NTgsLTIwNjkz
-NTkwMDQsNzU3MTI3NDk1LC0yMjg0NTI2MDMsLTYxMzg3Mzk5LD
-IxMTMwODE1ODEsLTE4NTMxMDcyOTMsLTE0NTExMDEwMzMsMTA3
-MDU3OTYwLDE1Mzc1MTE2NTQsLTExMjk5NzIwMjMsLTU0NjI0Mz
-U1NSwtMTI5ODY2ODA3MSw5MTQ5MDIyODIsMTkxNzg1MDk0OSwt
-NzA4MzY5MjA3XX0=
+eyJoaXN0b3J5IjpbLTE3MjEzNzk2NDcsLTQzMDEzMTE5NCwtMT
+Q0ODQ1NTc1MCwtMTMwMjI2ODY4OSwtMTk3ODE3NzA5Niw0NDcw
+MzI1NTgsLTIwNjkzNTkwMDQsNzU3MTI3NDk1LC0yMjg0NTI2MD
+MsLTYxMzg3Mzk5LDIxMTMwODE1ODEsLTE4NTMxMDcyOTMsLTE0
+NTExMDEwMzMsMTA3MDU3OTYwLDE1Mzc1MTE2NTQsLTExMjk5Nz
+IwMjMsLTU0NjI0MzU1NSwtMTI5ODY2ODA3MSw5MTQ5MDIyODIs
+MTkxNzg1MDk0OV19
 -->
