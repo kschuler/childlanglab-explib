@@ -27,7 +27,7 @@ Provide welcom message on the landing page.
 welcome:
      stimulus: "Welcome to the experiment. Press any key to begin!"
 ```
-Give instructions for .
+### Give instructions to users 
 ```
 instructions:
     stimulus: >
@@ -45,11 +45,11 @@ instructions:
         <p>Press any key to begin.</p>
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzNzUxMTY1NCwtMTEyOTk3MjAyMywtNT
-Q2MjQzNTU1LC0xMjk4NjY4MDcxLDkxNDkwMjI4MiwxOTE3ODUw
-OTQ5LC03MDgzNjkyMDcsLTE3NTUxNjAxMDYsOTk3MDgwODIyLD
-ExODk5ODA3MzQsMTYwOTI5NzE1MCwtNDkxNjM1NDc5LC0xOTQw
-NjkyMTQwLC04NjQzMDMwNTEsLTczOTM2NTE0MCwxNTgxNDYzOT
-g2LC0xMDU5NDM3NTczLDI5NjY1MjQ3MywxNzg4Nzk1NDc1LC0x
-OTYwNzI0MzQ0XX0=
+eyJoaXN0b3J5IjpbMjA3NzI3MjE0MywxNTM3NTExNjU0LC0xMT
+I5OTcyMDIzLC01NDYyNDM1NTUsLTEyOTg2NjgwNzEsOTE0OTAy
+MjgyLDE5MTc4NTA5NDksLTcwODM2OTIwNywtMTc1NTE2MDEwNi
+w5OTcwODA4MjIsMTE4OTk4MDczNCwxNjA5Mjk3MTUwLC00OTE2
+MzU0NzksLTE5NDA2OTIxNDAsLTg2NDMwMzA1MSwtNzM5MzY1MT
+QwLDE1ODE0NjM5ODYsLTEwNTk0Mzc1NzMsMjk2NjUyNDczLDE3
+ODg3OTU0NzVdfQ==
 -->
