@@ -4,7 +4,7 @@ title:  Simple Experiment
 nav_order: 21
 ---
 # Documentation for Simple Experiment
-{:no_toc}
+{: no_toc}
 * This documentation is written for [Simple Experiment](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RT/demo-experiment-simple-RT.html)
 * This documentation is hosted in [GitHub](https://github.com/kschuler/experiment-library/tree/master/demo-experiment-simple-RA)
 * Visit this [Documentation](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RA/readme.html)
@@ -22,8 +22,6 @@ This simple experiment is from [jsPsych Tutorial](https://www.jspsych.org/tutori
 {:toc}
 
 This is a demo documentation for `simple experiment`. The **structure** of this `simple expemiment`:
-
-
 1. HTML file: `demo-experiment-simple-RT/demo-experiment-simple-RT.html`
 2. JavaScript file: `js/jspsych-6.0.5/jspsych.js` and  `js/yaml.js`, etc.
 3. YAML file: `demo-experiment-simple-RT/params.yaml`provides parameters for HTML file.  `params.yaml` pass parameters to `demo-experiment-simple-RT.html` through `yaml.js` .
@@ -87,11 +85,11 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyMDI4NTg5NSwxNjgxNzc3MzYxLDIxMD
-M3NzIxODEsLTE3MjEzNzk2NDcsLTQzMDEzMTE5NCwtMTQ0ODQ1
-NTc1MCwtMTMwMjI2ODY4OSwtMTk3ODE3NzA5Niw0NDcwMzI1NT
-gsLTIwNjkzNTkwMDQsNzU3MTI3NDk1LC0yMjg0NTI2MDMsLTYx
-Mzg3Mzk5LDIxMTMwODE1ODEsLTE4NTMxMDcyOTMsLTE0NTExMD
-EwMzMsMTA3MDU3OTYwLDE1Mzc1MTE2NTQsLTExMjk5NzIwMjMs
-LTU0NjI0MzU1NV19
+eyJoaXN0b3J5IjpbLTEyODA2MTEwNjcsMTMyMDI4NTg5NSwxNj
+gxNzc3MzYxLDIxMDM3NzIxODEsLTE3MjEzNzk2NDcsLTQzMDEz
+MTE5NCwtMTQ0ODQ1NTc1MCwtMTMwMjI2ODY4OSwtMTk3ODE3Nz
+A5Niw0NDcwMzI1NTgsLTIwNjkzNTkwMDQsNzU3MTI3NDk1LC0y
+Mjg0NTI2MDMsLTYxMzg3Mzk5LDIxMTMwODE1ODEsLTE4NTMxMD
+cyOTMsLTE0NTExMDEwMzMsMTA3MDU3OTYwLDE1Mzc1MTE2NTQs
+LTExMjk5NzIwMjNdfQ==
 -->
