@@ -28,7 +28,7 @@ test_stimuli:
         path: "img/blue.png"
         key: 'f'
     orange:
-        path:  "img/orange.png"
+        path: "img/orange.png"
         key: 'j'
 
 fixation:
