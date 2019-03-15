@@ -49,7 +49,7 @@ welcome:
 Tip: use `>` to render content in one line. 
 ```yaml
 instructions:
-    stimulus: > # use '>'
+    stimulus: > # use'>' sign to render content in one line
         <p>In this experiment, a circle will appear in the center
         of the screen.</p><p>If the circle is <strong>blue</strong>,
         press the letter F on the keyboard as fast as you can.</p>
@@ -87,7 +87,7 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzMDgwNDY3MCwtMTIwODkwMzUyNCwtND
+eyJoaXN0b3J5IjpbLTk4NjI1OTE2MCwtMTIwODkwMzUyNCwtND
 E3NjIzOTQwLC03ODAzNjc2ODQsLTY5NTQ3MjIxMSwtNzgwMzY3
 Njg0LC00MjA0MzUyMDAsLTIwMDg0NzU4OTAsMTkzMzE1OTg1Ni
 wtMTU2NTYxMDYyMiwtMzA5MTIxMzAxLDEzMjAyODU4OTUsMTY4
