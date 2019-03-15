@@ -5,6 +5,11 @@ nav_order: 21
 ---
 # Documentation for Simple Experiment
 
+## Table of contents
+{: .no_toc .text-delta }
+
+
+
 * This documentation is written for [Simple Experiment](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RT/demo-experiment-simple-RT.html)
 * This documentation is hosted in [GitHub](https://github.com/kschuler/experiment-library/tree/master/demo-experiment-simple-RA)
 * Visit this [Documentation](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RA/readme.html)
@@ -12,6 +17,7 @@ nav_order: 21
 
 ### Goal for this Simple Experiments
 {:toc}
+
 This simple experiment is from [jsPsych Tutorial](https://www.jspsych.org/tutorials/rt-task/). The task is to press one key for a blue colored circle and another key for an orange colored circle.
 
 ### The Structure of  the Simple Experiment
@@ -73,11 +79,11 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3OTE1MzU4MSw3NTcxMjc0OTUsLTIyOD
-Q1MjYwMywtNjEzODczOTksMjExMzA4MTU4MSwtMTg1MzEwNzI5
-MywtMTQ1MTEwMTAzMywxMDcwNTc5NjAsMTUzNzUxMTY1NCwtMT
-EyOTk3MjAyMywtNTQ2MjQzNTU1LC0xMjk4NjY4MDcxLDkxNDkw
-MjI4MiwxOTE3ODUwOTQ5LC03MDgzNjkyMDcsLTE3NTUxNjAxMD
-YsOTk3MDgwODIyLDExODk5ODA3MzQsMTYwOTI5NzE1MCwtNDkx
-NjM1NDc5XX0=
+eyJoaXN0b3J5IjpbLTIwNjkzNTkwMDQsNzU3MTI3NDk1LC0yMj
+g0NTI2MDMsLTYxMzg3Mzk5LDIxMTMwODE1ODEsLTE4NTMxMDcy
+OTMsLTE0NTExMDEwMzMsMTA3MDU3OTYwLDE1Mzc1MTE2NTQsLT
+ExMjk5NzIwMjMsLTU0NjI0MzU1NSwtMTI5ODY2ODA3MSw5MTQ5
+MDIyODIsMTkxNzg1MDk0OSwtNzA4MzY5MjA3LC0xNzU1MTYwMT
+A2LDk5NzA4MDgyMiwxMTg5OTgwNzM0LDE2MDkyOTcxNTAsLTQ5
+MTYzNTQ3OV19
 -->
