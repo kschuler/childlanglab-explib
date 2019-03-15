@@ -6,8 +6,8 @@ nav_order: 21
 # Documentation for Simple Experiment
 
 * This documentation is hosted in [GitHub](https://github.com/kschuler/experiment-library/tree/master/demo-experiment-simple-RA)
-
 * Visted this [Documentation](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RA/readme.html)
+
 ### Goal for this Simple Experiments
 This simple experiment is from [jsPsych Tutorial](https://www.jspsych.org/tutorials/rt-task/). The task is to press one key for a blue colored circle and another key for an orange colored circle.
 
@@ -51,6 +51,7 @@ instructions:
 ### Set Up Test Trial
 * Define the tag for the experiments, it make your life easier when you want to calculate the test results.
 * Set up the path for images and tags and other details.
+
 ```yaml
 test_stimuli: 
     tag: 'test' # set the path 
@@ -69,15 +70,13 @@ fixation:
     [250, 500, 750, 1000, 1250, 1500, 1750, 2000]
     # set the tag for fixation.
     tag: 'fixation'
-    
-
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUxNjk5OTM5LC0xODUzMTA3MjkzLC0xND
-UxMTAxMDMzLDEwNzA1Nzk2MCwxNTM3NTExNjU0LC0xMTI5OTcy
-MDIzLC01NDYyNDM1NTUsLTEyOTg2NjgwNzEsOTE0OTAyMjgyLD
-E5MTc4NTA5NDksLTcwODM2OTIwNywtMTc1NTE2MDEwNiw5OTcw
-ODA4MjIsMTE4OTk4MDczNCwxNjA5Mjk3MTUwLC00OTE2MzU0Nz
-ksLTE5NDA2OTIxNDAsLTg2NDMwMzA1MSwtNzM5MzY1MTQwLDE1
-ODE0NjM5ODZdfQ==
+eyJoaXN0b3J5IjpbMjExMzA4MTU4MSwtMTg1MzEwNzI5MywtMT
+Q1MTEwMTAzMywxMDcwNTc5NjAsMTUzNzUxMTY1NCwtMTEyOTk3
+MjAyMywtNTQ2MjQzNTU1LC0xMjk4NjY4MDcxLDkxNDkwMjI4Mi
+wxOTE3ODUwOTQ5LC03MDgzNjkyMDcsLTE3NTUxNjAxMDYsOTk3
+MDgwODIyLDExODk5ODA3MzQsMTYwOTI5NzE1MCwtNDkxNjM1ND
+c5LC0xOTQwNjkyMTQwLC04NjQzMDMwNTEsLTczOTM2NTE0MCwx
+NTgxNDYzOTg2XX0=
 -->
