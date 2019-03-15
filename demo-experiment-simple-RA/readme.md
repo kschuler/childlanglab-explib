@@ -9,7 +9,7 @@ nav_order: 21
 
 *Visted this [Documentation](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RA/readme.html)
 ### Goal for this Simple Experiments
-This simple experiment is a demo from jsPsych
+This simple experiment is from [jsPsych Tutorial](https://www.jspsych.org/tutorials/rt-task/)
 The task is to press one key for a blue colored circle and another key for an orange colored circle
 
 ### The Structure of  the Simple Experiment
@@ -69,7 +69,7 @@ fixation:
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzMDMyMjM1NCwxNTM3NTExNjU0LC0xMT
+eyJoaXN0b3J5IjpbMjExNjk2NjI3MywxNTM3NTExNjU0LC0xMT
 I5OTcyMDIzLC01NDYyNDM1NTUsLTEyOTg2NjgwNzEsOTE0OTAy
 MjgyLDE5MTc4NTA5NDksLTcwODM2OTIwNywtMTc1NTE2MDEwNi
 w5OTcwODA4MjIsMTE4OTk4MDczNCwxNjA5Mjk3MTUwLC00OTE2
