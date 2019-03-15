@@ -24,13 +24,13 @@ The HTML file is the skeleton of the behavioral experiment. It mainly utilizes J
 ## How to Modify YAML file
 We prove an example on how to implements the yaml file, that is, how to provide parameter for the skeleton for the experiments.
 
-### Welcome and Instruction 
+###  1. Welcome and Instruction 
 Provide welcom message on the landing page.
 ```yaml
 welcome:
      stimulus: "Welcome to the experiment. Press any key to begin!"
 ```
-### Give Instructions to users 
+### 2. Give Instructions to users 
 Tip: use `>` to render content in one line. 
 ```yaml
 instructions:
@@ -48,7 +48,7 @@ instructions:
         </div>
         <p>Press any key to begin.</p>
 ```
-### Set Up Test Trial
+### 3. Set Up Test Trial
 * Define the tag for the experiments, it make your life easier when you want to calculate the test results.
 * Set up the path for images and tags and other details.
 
@@ -72,11 +72,11 @@ fixation:
     tag: 'fixation'
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjExMzA4MTU4MSwtMTg1MzEwNzI5MywtMT
-Q1MTEwMTAzMywxMDcwNTc5NjAsMTUzNzUxMTY1NCwtMTEyOTk3
-MjAyMywtNTQ2MjQzNTU1LC0xMjk4NjY4MDcxLDkxNDkwMjI4Mi
-wxOTE3ODUwOTQ5LC03MDgzNjkyMDcsLTE3NTUxNjAxMDYsOTk3
-MDgwODIyLDExODk5ODA3MzQsMTYwOTI5NzE1MCwtNDkxNjM1ND
-c5LC0xOTQwNjkyMTQwLC04NjQzMDMwNTEsLTczOTM2NTE0MCwx
-NTgxNDYzOTg2XX0=
+eyJoaXN0b3J5IjpbLTYxMzg3Mzk5LDIxMTMwODE1ODEsLTE4NT
+MxMDcyOTMsLTE0NTExMDEwMzMsMTA3MDU3OTYwLDE1Mzc1MTE2
+NTQsLTExMjk5NzIwMjMsLTU0NjI0MzU1NSwtMTI5ODY2ODA3MS
+w5MTQ5MDIyODIsMTkxNzg1MDk0OSwtNzA4MzY5MjA3LC0xNzU1
+MTYwMTA2LDk5NzA4MDgyMiwxMTg5OTgwNzM0LDE2MDkyOTcxNT
+AsLTQ5MTYzNTQ3OSwtMTk0MDY5MjE0MCwtODY0MzAzMDUxLC03
+MzkzNjUxNDBdfQ==
 -->
