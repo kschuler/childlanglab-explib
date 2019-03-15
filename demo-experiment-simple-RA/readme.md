@@ -53,8 +53,8 @@ instructions:
 * Set up the path for images and tags and other details.
 ```yaml
 test_stimuli: 
-	# set the path 
-    tag: 'test' 
+    tag: 'test' # set the path 
+    
     blue:
 	    # set the path 
         path: "img/blue.png"   
@@ -75,11 +75,11 @@ fixation:
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTExMDEwMzMsMTA3MDU3OTYwLDE1Mz
-c1MTE2NTQsLTExMjk5NzIwMjMsLTU0NjI0MzU1NSwtMTI5ODY2
-ODA3MSw5MTQ5MDIyODIsMTkxNzg1MDk0OSwtNzA4MzY5MjA3LC
-0xNzU1MTYwMTA2LDk5NzA4MDgyMiwxMTg5OTgwNzM0LDE2MDky
-OTcxNTAsLTQ5MTYzNTQ3OSwtMTk0MDY5MjE0MCwtODY0MzAzMD
-UxLC03MzkzNjUxNDAsMTU4MTQ2Mzk4NiwtMTA1OTQzNzU3Mywy
-OTY2NTI0NzNdfQ==
+eyJoaXN0b3J5IjpbLTE4NTMxMDcyOTMsLTE0NTExMDEwMzMsMT
+A3MDU3OTYwLDE1Mzc1MTE2NTQsLTExMjk5NzIwMjMsLTU0NjI0
+MzU1NSwtMTI5ODY2ODA3MSw5MTQ5MDIyODIsMTkxNzg1MDk0OS
+wtNzA4MzY5MjA3LC0xNzU1MTYwMTA2LDk5NzA4MDgyMiwxMTg5
+OTgwNzM0LDE2MDkyOTcxNTAsLTQ5MTYzNTQ3OSwtMTk0MDY5Mj
+E0MCwtODY0MzAzMDUxLC03MzkzNjUxNDAsMTU4MTQ2Mzk4Niwt
+MTA1OTQzNzU3M119
 -->
