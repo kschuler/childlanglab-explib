@@ -19,7 +19,7 @@ This is a demo documentation for `simple experiment`. The **structure** of this 
 2. JavaScript file: `js/jspsych-6.0.5/jspsych.js` and  `js/yaml.js`, etc.
 3. YAML file: `demo-experiment-simple-RT/params.yaml`provide parameters for HTML file.  It can be injected into HTML file through `yaml.js` .
 
-Relation: The HTML file is the skeleton of the behavioral experiment. It mainly utilizes JavaScript library  [jsPysch](https://www.jspsych.org/) to implement the interactive experiment. YAML file is to provide parameters for the skeleton of the experiment of HTML file. 
+The HTML file is the skeleton of the behavioral experiment. It mainly utilizes JavaScript library  [jsPysch](https://www.jspsych.org/) to implement the interactive experiment. YAML file is to provide parameters for the skeleton of the experiment of HTML file. 
 
 ## How to use YAML file
 We prove an example on how to implements the yaml file, that is, how to provide parameter for the skeleton for the experiments.
@@ -68,7 +68,7 @@ fixation:
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTYxMDkxNjM3LDE1Mzc1MTE2NTQsLTExMj
+eyJoaXN0b3J5IjpbLTg3MTU0NTA1LDE1Mzc1MTE2NTQsLTExMj
 k5NzIwMjMsLTU0NjI0MzU1NSwtMTI5ODY2ODA3MSw5MTQ5MDIy
 ODIsMTkxNzg1MDk0OSwtNzA4MzY5MjA3LC0xNzU1MTYwMTA2LD
 k5NzA4MDgyMiwxMTg5OTgwNzM0LDE2MDkyOTcxNTAsLTQ5MTYz
