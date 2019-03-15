@@ -13,16 +13,12 @@ nav_order: 21
 {: .no_toc .text-delta }
 
 
-
-
-
-
-1.  Goal for this Simple Experiments
+1.  ### Goal for this Simple Experiments
 {:toc}
 
 This simple experiment is from [jsPsych Tutorial](https://www.jspsych.org/tutorials/rt-task/). The task is to press one key for a blue colored circle and another key for an orange colored circle.
 
-2. The Structure of  the Simple Experiment
+2. ### The Structure of  the Simple Experiment
 {:toc}
 
 This is a demo documentation for `simple experiment`. The **structure** of this `simple expemiment`:
@@ -39,7 +35,7 @@ The HTML file is the skeleton of the behavioral experiment. It mainly utilizes J
 
 We prove an example on how to implements the yaml file, that is, how to provide parameter for the skeleton for the experiments.
 
-####  1. Welcome and Instruction 
+####  Welcome and Instruction 
 {: toc}
 
 Provide welcom message on the landing page.
@@ -47,7 +43,7 @@ Provide welcom message on the landing page.
 welcome:
      stimulus: "Welcome to the experiment. Press any key to begin!"
 ```
-#### 2. Give Instructions to users 
+####  Give Instructions to users 
 {: toc}
 
 Tip: use `>` to render content in one line. 
@@ -67,7 +63,7 @@ instructions:
         </div>
         <p>Press any key to begin.</p>
 ```
-#### 3. Set Up Test Trial
+#### Set Up Test Trial
 {:toc}
 
 * Define the tag for the experiments, it make your life easier when you want to calculate the test results.
@@ -91,7 +87,7 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzY1NTQ2NDcxLC0xMzAyMjY4Njg5LC0xOT
+eyJoaXN0b3J5IjpbLTg1Njg4NTMxLC0xMzAyMjY4Njg5LC0xOT
 c4MTc3MDk2LDQ0NzAzMjU1OCwtMjA2OTM1OTAwNCw3NTcxMjc0
 OTUsLTIyODQ1MjYwMywtNjEzODczOTksMjExMzA4MTU4MSwtMT
 g1MzEwNzI5MywtMTQ1MTEwMTAzMywxMDcwNTc5NjAsMTUzNzUx
