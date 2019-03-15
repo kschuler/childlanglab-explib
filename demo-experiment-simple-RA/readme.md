@@ -10,7 +10,7 @@ nav_order: 21
 * Visit this [Documentation](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RA/readme.html)
 
 ## Table of Contents
-{: .no_toc }
+
 
 
 *  ## Goal for this Simple Experiments
@@ -33,7 +33,7 @@ The HTML file is the skeleton of the behavioral experiment. It mainly utilizes J
 
 We prove an example on how to implements the yaml file, that is, how to provide parameter for the skeleton for the experiments.
 
-- ###  Welcome and Instruction 
+- ###  1. Welcome and Instruction 
 {: toc}
 
 Provide welcom message on the landing page.
@@ -41,7 +41,7 @@ Provide welcom message on the landing page.
 welcome:
      stimulus: "Welcome to the experiment. Press any key to begin!"
 ```
-- ###  Give Instructions to users 
+- ###  2. Give Instructions to users 
 {: toc}
 
 Tip: use `>` to render content in one line. 
@@ -61,7 +61,7 @@ instructions:
         </div>
         <p>Press any key to begin.</p>
 ```
-- ### Set Up Test Trial
+- ### 3. Set Up Test Trial
 {:toc}
 
 * Define the tag for the experiments, it make your life easier when you want to calculate the test results.
@@ -85,7 +85,7 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMTY0NzMzMjEsMTkzMzE1OTg1NiwtMT
+eyJoaXN0b3J5IjpbLTIwOTAwNjU5OTcsMTkzMzE1OTg1NiwtMT
 U2NTYxMDYyMiwtMzA5MTIxMzAxLDEzMjAyODU4OTUsMTY4MTc3
 NzM2MSwyMTAzNzcyMTgxLC0xNzIxMzc5NjQ3LC00MzAxMzExOT
 QsLTE0NDg0NTU3NTAsLTEzMDIyNjg2ODksLTE5NzgxNzcwOTYs
