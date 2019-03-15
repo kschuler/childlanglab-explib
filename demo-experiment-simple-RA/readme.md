@@ -49,7 +49,7 @@ welcome:
 Tip: use `>` to render content in one line. 
 ```yaml
 instructions:
-    stimulus: >
+    stimulus: > # use '>'
         <p>In this experiment, a circle will appear in the center
         of the screen.</p><p>If the circle is <strong>blue</strong>,
         press the letter F on the keyboard as fast as you can.</p>
@@ -87,11 +87,11 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMDg5MDM1MjQsLTQxNzYyMzk0MCwtNz
-gwMzY3Njg0LC02OTU0NzIyMTEsLTc4MDM2NzY4NCwtNDIwNDM1
-MjAwLC0yMDA4NDc1ODkwLDE5MzMxNTk4NTYsLTE1NjU2MTA2Mj
-IsLTMwOTEyMTMwMSwxMzIwMjg1ODk1LDE2ODE3NzczNjEsMjEw
-Mzc3MjE4MSwtMTcyMTM3OTY0NywtNDMwMTMxMTk0LC0xNDQ4ND
-U1NzUwLC0xMzAyMjY4Njg5LC0xOTc4MTc3MDk2LDQ0NzAzMjU1
-OCwtMjA2OTM1OTAwNF19
+eyJoaXN0b3J5IjpbLTkzMDgwNDY3MCwtMTIwODkwMzUyNCwtND
+E3NjIzOTQwLC03ODAzNjc2ODQsLTY5NTQ3MjIxMSwtNzgwMzY3
+Njg0LC00MjA0MzUyMDAsLTIwMDg0NzU4OTAsMTkzMzE1OTg1Ni
+wtMTU2NTYxMDYyMiwtMzA5MTIxMzAxLDEzMjAyODU4OTUsMTY4
+MTc3NzM2MSwyMTAzNzcyMTgxLC0xNzIxMzc5NjQ3LC00MzAxMz
+ExOTQsLTE0NDg0NTU3NTAsLTEzMDIyNjg2ODksLTE5NzgxNzcw
+OTYsNDQ3MDMyNTU4XX0=
 -->
