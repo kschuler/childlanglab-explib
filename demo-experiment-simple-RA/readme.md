@@ -61,7 +61,7 @@ instructions:
         </div>
         <p>Press any key to begin.</p>
 ```
-- ### 3. Set Up Test Trial
+ ### 3. Set Up Test Trial
 {:toc}
 
 * Define the tag for the experiments, it make your life easier when you want to calculate the test results.
@@ -85,11 +85,11 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc4MDM2NzY4NCwtNDIwNDM1MjAwLC0yMD
-A4NDc1ODkwLDE5MzMxNTk4NTYsLTE1NjU2MTA2MjIsLTMwOTEy
-MTMwMSwxMzIwMjg1ODk1LDE2ODE3NzczNjEsMjEwMzc3MjE4MS
-wtMTcyMTM3OTY0NywtNDMwMTMxMTk0LC0xNDQ4NDU1NzUwLC0x
-MzAyMjY4Njg5LC0xOTc4MTc3MDk2LDQ0NzAzMjU1OCwtMjA2OT
-M1OTAwNCw3NTcxMjc0OTUsLTIyODQ1MjYwMywtNjEzODczOTks
-MjExMzA4MTU4MV19
+eyJoaXN0b3J5IjpbLTY5NTQ3MjIxMSwtNzgwMzY3Njg0LC00Mj
+A0MzUyMDAsLTIwMDg0NzU4OTAsMTkzMzE1OTg1NiwtMTU2NTYx
+MDYyMiwtMzA5MTIxMzAxLDEzMjAyODU4OTUsMTY4MTc3NzM2MS
+wyMTAzNzcyMTgxLC0xNzIxMzc5NjQ3LC00MzAxMzExOTQsLTE0
+NDg0NTU3NTAsLTEzMDIyNjg2ODksLTE5NzgxNzcwOTYsNDQ3MD
+MyNTU4LC0yMDY5MzU5MDA0LDc1NzEyNzQ5NSwtMjI4NDUyNjAz
+LC02MTM4NzM5OV19
 -->
