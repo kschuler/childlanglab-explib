@@ -9,7 +9,7 @@ nav_order: 21
 * This documentation is hosted in [GitHub](https://github.com/kschuler/experiment-library/tree/master/demo-experiment-simple-RA)
 * Visit this [Documentation](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RA/readme.html)
 
-## Table of Contents
+### Table of Contents
 
 
 
@@ -85,7 +85,7 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTAwNjU5OTcsMTkzMzE1OTg1NiwtMT
+eyJoaXN0b3J5IjpbLTIwMDg0NzU4OTAsMTkzMzE1OTg1NiwtMT
 U2NTYxMDYyMiwtMzA5MTIxMzAxLDEzMjAyODU4OTUsMTY4MTc3
 NzM2MSwyMTAzNzcyMTgxLC0xNzIxMzc5NjQ3LC00MzAxMzExOT
 QsLTE0NDg0NTU3NTAsLTEzMDIyNjg2ODksLTE5NzgxNzcwOTYs
