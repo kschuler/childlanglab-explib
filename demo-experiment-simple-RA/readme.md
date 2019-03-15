@@ -10,7 +10,7 @@ nav_order: 21
 * Visit this [Documentation](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RA/readme.html)
 
 ### Table of Contents
-
+{: no_toc}
 
 
 *  ## Goal for this Simple Experiments
@@ -85,11 +85,11 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDg0NzU4OTAsLTQyMDQzNTIwMCwxOT
-MzMTU5ODU2LC0xNTY1NjEwNjIyLC0zMDkxMjEzMDEsMTMyMDI4
-NTg5NSwxNjgxNzc3MzYxLDIxMDM3NzIxODEsLTE3MjEzNzk2ND
-csLTQzMDEzMTE5NCwtMTQ0ODQ1NTc1MCwtMTMwMjI2ODY4OSwt
-MTk3ODE3NzA5Niw0NDcwMzI1NTgsLTIwNjkzNTkwMDQsNzU3MT
-I3NDk1LC0yMjg0NTI2MDMsLTYxMzg3Mzk5LDIxMTMwODE1ODEs
-LTE4NTMxMDcyOTNdfQ==
+eyJoaXN0b3J5IjpbLTQyMDQzNTIwMCwtMjAwODQ3NTg5MCwtND
+IwNDM1MjAwLDE5MzMxNTk4NTYsLTE1NjU2MTA2MjIsLTMwOTEy
+MTMwMSwxMzIwMjg1ODk1LDE2ODE3NzczNjEsMjEwMzc3MjE4MS
+wtMTcyMTM3OTY0NywtNDMwMTMxMTk0LC0xNDQ4NDU1NzUwLC0x
+MzAyMjY4Njg5LC0xOTc4MTc3MDk2LDQ0NzAzMjU1OCwtMjA2OT
+M1OTAwNCw3NTcxMjc0OTUsLTIyODQ1MjYwMywtNjEzODczOTks
+MjExMzA4MTU4MV19
 -->
