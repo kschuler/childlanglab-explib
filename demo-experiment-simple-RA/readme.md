@@ -28,6 +28,7 @@ welcome:
      stimulus: "Welcome to the experiment. Press any key to begin!"
 ```
 ### Give Instructions to users 
+Tip: use `>` to render content in one line. 
 ```
 instructions:
     stimulus: >
@@ -45,8 +46,8 @@ instructions:
         <p>Press any key to begin.</p>
 ```
 ### Set Up Test Trial
+Set up the 
 ```
-# ----------------TEST TRIAL --------------------#
 test_stimuli: 
     tag: 'test'
     blue:
@@ -63,11 +64,11 @@ fixation:
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTUyMDAxNjkxLDE1Mzc1MTE2NTQsLTExMj
-k5NzIwMjMsLTU0NjI0MzU1NSwtMTI5ODY2ODA3MSw5MTQ5MDIy
-ODIsMTkxNzg1MDk0OSwtNzA4MzY5MjA3LC0xNzU1MTYwMTA2LD
-k5NzA4MDgyMiwxMTg5OTgwNzM0LDE2MDkyOTcxNTAsLTQ5MTYz
-NTQ3OSwtMTk0MDY5MjE0MCwtODY0MzAzMDUxLC03MzkzNjUxND
-AsMTU4MTQ2Mzk4NiwtMTA1OTQzNzU3MywyOTY2NTI0NzMsMTc4
-ODc5NTQ3NV19
+eyJoaXN0b3J5IjpbLTM2MjgxOTY0MiwxNTM3NTExNjU0LC0xMT
+I5OTcyMDIzLC01NDYyNDM1NTUsLTEyOTg2NjgwNzEsOTE0OTAy
+MjgyLDE5MTc4NTA5NDksLTcwODM2OTIwNywtMTc1NTE2MDEwNi
+w5OTcwODA4MjIsMTE4OTk4MDczNCwxNjA5Mjk3MTUwLC00OTE2
+MzU0NzksLTE5NDA2OTIxNDAsLTg2NDMwMzA1MSwtNzM5MzY1MT
+QwLDE1ODE0NjM5ODYsLTEwNTk0Mzc1NzMsMjk2NjUyNDczLDE3
+ODg3OTU0NzVdfQ==
 -->
