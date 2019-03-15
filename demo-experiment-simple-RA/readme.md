@@ -47,13 +47,13 @@ instructions:
 ```
 ### Set Up Test Trial
 * Define the tag for the experiments, it make your life easier when you want to calculate the test results.
-* Set up the pate
+* Set up the path for imag
 ```
 test_stimuli: 
-    tag: 'test'
+    tag: 'test' # set the path 
     blue:
-        path: "img/blue.png" #
-        key: 'f'
+        path: "img/blue.png" # set the path 
+        key: 'f' # set the correct response
     orange:
         path: "img/orange.png"
         key: 'j'
@@ -65,11 +65,11 @@ fixation:
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MDUyNTg1NDIsMTUzNzUxMTY1NCwtMT
-EyOTk3MjAyMywtNTQ2MjQzNTU1LC0xMjk4NjY4MDcxLDkxNDkw
-MjI4MiwxOTE3ODUwOTQ5LC03MDgzNjkyMDcsLTE3NTUxNjAxMD
-YsOTk3MDgwODIyLDExODk5ODA3MzQsMTYwOTI5NzE1MCwtNDkx
-NjM1NDc5LC0xOTQwNjkyMTQwLC04NjQzMDMwNTEsLTczOTM2NT
-E0MCwxNTgxNDYzOTg2LC0xMDU5NDM3NTczLDI5NjY1MjQ3Mywx
-Nzg4Nzk1NDc1XX0=
+eyJoaXN0b3J5IjpbMTc1Mzg3OTY4NCwxNTM3NTExNjU0LC0xMT
+I5OTcyMDIzLC01NDYyNDM1NTUsLTEyOTg2NjgwNzEsOTE0OTAy
+MjgyLDE5MTc4NTA5NDksLTcwODM2OTIwNywtMTc1NTE2MDEwNi
+w5OTcwODA4MjIsMTE4OTk4MDczNCwxNjA5Mjk3MTUwLC00OTE2
+MzU0NzksLTE5NDA2OTIxNDAsLTg2NDMwMzA1MSwtNzM5MzY1MT
+QwLDE1ODE0NjM5ODYsLTEwNTk0Mzc1NzMsMjk2NjUyNDczLDE3
+ODg3OTU0NzVdfQ==
 -->
