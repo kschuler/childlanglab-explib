@@ -18,12 +18,12 @@ nav_order: 21
 
 *  ## Goal for this Simple Experiments
 {:toc}
-This simple experiment is from [jsPsych Tutorial](https://www.jspsych.org/tutorials/rt-task/). The task is to press one key for a blue colored circle and another key for an orange colored circle.
+
 
 *  ## The Structure of  the Simple Experiment
 {:toc}
 
-This is a demo documentation for `simple experiment`. The **structure** of this `simple expemiment`:
+This simple experiment is from [jsPsych Tutorial](https://www.jspsych.org/tutorials/rt-task/). The task is to press one key for a blue colored circle and another key for an orange colored circle. The **structure** of this `simple expemiment`:
 1. HTML file: `demo-experiment-simple-RT/demo-experiment-simple-RT.html`
 2. JavaScript file: `js/jspsych-6.0.5/jspsych.js` and  `js/yaml.js`, etc.
 3. YAML file: `demo-experiment-simple-RT/params.yaml`provides parameters for HTML file.  `params.yaml` pass parameters to `demo-experiment-simple-RT.html` through `yaml.js` .
@@ -87,11 +87,11 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxNzYyMzk0MCwtNzgwMzY3Njg0LC02OT
-U0NzIyMTEsLTc4MDM2NzY4NCwtNDIwNDM1MjAwLC0yMDA4NDc1
-ODkwLDE5MzMxNTk4NTYsLTE1NjU2MTA2MjIsLTMwOTEyMTMwMS
-wxMzIwMjg1ODk1LDE2ODE3NzczNjEsMjEwMzc3MjE4MSwtMTcy
-MTM3OTY0NywtNDMwMTMxMTk0LC0xNDQ4NDU1NzUwLC0xMzAyMj
-Y4Njg5LC0xOTc4MTc3MDk2LDQ0NzAzMjU1OCwtMjA2OTM1OTAw
-NCw3NTcxMjc0OTVdfQ==
+eyJoaXN0b3J5IjpbLTEyMDg5MDM1MjQsLTQxNzYyMzk0MCwtNz
+gwMzY3Njg0LC02OTU0NzIyMTEsLTc4MDM2NzY4NCwtNDIwNDM1
+MjAwLC0yMDA4NDc1ODkwLDE5MzMxNTk4NTYsLTE1NjU2MTA2Mj
+IsLTMwOTEyMTMwMSwxMzIwMjg1ODk1LDE2ODE3NzczNjEsMjEw
+Mzc3MjE4MSwtMTcyMTM3OTY0NywtNDMwMTMxMTk0LC0xNDQ4ND
+U1NzUwLC0xMzAyMjY4Njg5LC0xOTc4MTc3MDk2LDQ0NzAzMjU1
+OCwtMjA2OTM1OTAwNF19
 -->
