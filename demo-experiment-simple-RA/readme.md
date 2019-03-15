@@ -57,8 +57,7 @@ test_stimuli:
     tag: 'test' # set the path 
     blue:
         path: "img/blue.png"   # set the path
-        # set the correct response
-        key: 'f' 
+        key: 'f'  # set the correct response
     orange:
         path: "img/orange.png"
         key: 'j'
@@ -72,11 +71,11 @@ fixation:
     tag: 'fixation'
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxMzg3Mzk5LDIxMTMwODE1ODEsLTE4NT
-MxMDcyOTMsLTE0NTExMDEwMzMsMTA3MDU3OTYwLDE1Mzc1MTE2
-NTQsLTExMjk5NzIwMjMsLTU0NjI0MzU1NSwtMTI5ODY2ODA3MS
-w5MTQ5MDIyODIsMTkxNzg1MDk0OSwtNzA4MzY5MjA3LC0xNzU1
-MTYwMTA2LDk5NzA4MDgyMiwxMTg5OTgwNzM0LDE2MDkyOTcxNT
-AsLTQ5MTYzNTQ3OSwtMTk0MDY5MjE0MCwtODY0MzAzMDUxLC03
-MzkzNjUxNDBdfQ==
+eyJoaXN0b3J5IjpbLTIxMjUzOTM0MDMsLTYxMzg3Mzk5LDIxMT
+MwODE1ODEsLTE4NTMxMDcyOTMsLTE0NTExMDEwMzMsMTA3MDU3
+OTYwLDE1Mzc1MTE2NTQsLTExMjk5NzIwMjMsLTU0NjI0MzU1NS
+wtMTI5ODY2ODA3MSw5MTQ5MDIyODIsMTkxNzg1MDk0OSwtNzA4
+MzY5MjA3LC0xNzU1MTYwMTA2LDk5NzA4MDgyMiwxMTg5OTgwNz
+M0LDE2MDkyOTcxNTAsLTQ5MTYzNTQ3OSwtMTk0MDY5MjE0MCwt
+ODY0MzAzMDUxXX0=
 -->
