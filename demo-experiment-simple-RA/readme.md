@@ -54,10 +54,8 @@ instructions:
 ```yaml
 test_stimuli: 
     tag: 'test' # set the path 
-    
     blue:
-	    # set the path 
-        path: "img/blue.png"   
+        path: "img/blue.png"   # set the path
         # set the correct response
         key: 'f' 
     orange:
@@ -75,11 +73,11 @@ fixation:
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTMxMDcyOTMsLTE0NTExMDEwMzMsMT
-A3MDU3OTYwLDE1Mzc1MTE2NTQsLTExMjk5NzIwMjMsLTU0NjI0
-MzU1NSwtMTI5ODY2ODA3MSw5MTQ5MDIyODIsMTkxNzg1MDk0OS
-wtNzA4MzY5MjA3LC0xNzU1MTYwMTA2LDk5NzA4MDgyMiwxMTg5
-OTgwNzM0LDE2MDkyOTcxNTAsLTQ5MTYzNTQ3OSwtMTk0MDY5Mj
-E0MCwtODY0MzAzMDUxLC03MzkzNjUxNDAsMTU4MTQ2Mzk4Niwt
-MTA1OTQzNzU3M119
+eyJoaXN0b3J5IjpbMTUxNjk5OTM5LC0xODUzMTA3MjkzLC0xND
+UxMTAxMDMzLDEwNzA1Nzk2MCwxNTM3NTExNjU0LC0xMTI5OTcy
+MDIzLC01NDYyNDM1NTUsLTEyOTg2NjgwNzEsOTE0OTAyMjgyLD
+E5MTc4NTA5NDksLTcwODM2OTIwNywtMTc1NTE2MDEwNiw5OTcw
+ODA4MjIsMTE4OTk4MDczNCwxNjA5Mjk3MTUwLC00OTE2MzU0Nz
+ksLTE5NDA2OTIxNDAsLTg2NDMwMzA1MSwtNzM5MzY1MTQwLDE1
+ODE0NjM5ODZdfQ==
 -->
