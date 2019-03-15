@@ -5,8 +5,8 @@ nav_order: 21
 ---
 # Documentation for Simple Experiment
 {: .no_toc  }
-* This documentation is written for `Simple Experiment`, try this simple experiment [here](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RT/demo-experiment-simple-RT.html)
-* This documentation is hosted in [GitHub](https://github.com/kschuler/experiment-library/tree/master/demo-experiment-simple-RA)
+* This documentation is written for `Simple Experiment`, try this simple experiment [Here](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RT/demo-experiment-simple-RT.html)
+* Source code for this documentation is hosted in [GitHub](https://github.com/kschuler/experiment-library/tree/master/demo-experiment-simple-RA)
 * Visit this [Documentation](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RA/readme.html)
 
 ### Table of Contents
@@ -87,7 +87,7 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjUzNTU3MDk0LC05ODYyNTkxNjAsLTEyMD
+eyJoaXN0b3J5IjpbMjk5MjI5MTUzLC05ODYyNTkxNjAsLTEyMD
 g5MDM1MjQsLTQxNzYyMzk0MCwtNzgwMzY3Njg0LC02OTU0NzIy
 MTEsLTc4MDM2NzY4NCwtNDIwNDM1MjAwLC0yMDA4NDc1ODkwLD
 E5MzMxNTk4NTYsLTE1NjU2MTA2MjIsLTMwOTEyMTMwMSwxMzIw
