@@ -29,7 +29,7 @@ This is a demo documentation for `simple experiment`. The **structure** of this 
 
 1. HTML file: `demo-experiment-simple-RT/demo-experiment-simple-RT.html`
 2. JavaScript file: `js/jspsych-6.0.5/jspsych.js` and  `js/yaml.js`, etc.
-3. YAML file: `demo-experiment-simple-RT/params.yaml`provide parameters for HTML file.  It can be injected into HTML file through `yaml.js` .
+3. YAML file: `demo-experiment-simple-RT/params.yaml`provide parameters for HTML file.  `params.yaml` pass parameters to  through `yaml.js` .
 
 The HTML file is the skeleton of the behavioral experiment. It mainly utilizes JavaScript library  [jsPysch](https://www.jspsych.org/) to implement the interactive experiment. YAML file is to provide parameters for the skeleton of the experiment of HTML file. 
 
@@ -90,11 +90,11 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTMxMDg0MDQ1LDQ0NzAzMjU1OCwtMjA2OT
-M1OTAwNCw3NTcxMjc0OTUsLTIyODQ1MjYwMywtNjEzODczOTks
-MjExMzA4MTU4MSwtMTg1MzEwNzI5MywtMTQ1MTEwMTAzMywxMD
-cwNTc5NjAsMTUzNzUxMTY1NCwtMTEyOTk3MjAyMywtNTQ2MjQz
-NTU1LC0xMjk4NjY4MDcxLDkxNDkwMjI4MiwxOTE3ODUwOTQ5LC
-03MDgzNjkyMDcsLTE3NTUxNjAxMDYsOTk3MDgwODIyLDExODk5
-ODA3MzRdfQ==
+eyJoaXN0b3J5IjpbLTQ1NDM0MzA5Nyw0NDcwMzI1NTgsLTIwNj
+kzNTkwMDQsNzU3MTI3NDk1LC0yMjg0NTI2MDMsLTYxMzg3Mzk5
+LDIxMTMwODE1ODEsLTE4NTMxMDcyOTMsLTE0NTExMDEwMzMsMT
+A3MDU3OTYwLDE1Mzc1MTE2NTQsLTExMjk5NzIwMjMsLTU0NjI0
+MzU1NSwtMTI5ODY2ODA3MSw5MTQ5MDIyODIsMTkxNzg1MDk0OS
+wtNzA4MzY5MjA3LC0xNzU1MTYwMTA2LDk5NzA4MDgyMiwxMTg5
+OTgwNzM0XX0=
 -->
