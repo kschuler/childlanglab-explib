@@ -5,9 +5,9 @@ nav_order: 21
 ---
 # Documentation for Simple Experiment
 
-*This documentation is hosted in [GitHub](https://github.com/kschuler/experiment-library/tree/master/demo-experiment-simple-RA)
+* This documentation is hosted in [GitHub](https://github.com/kschuler/experiment-library/tree/master/demo-experiment-simple-RA)
 
-*Visted this [Documentation](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RA/readme.html)
+* Visted this [Documentation](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RA/readme.html)
 ### Goal for this Simple Experiments
 This simple experiment is from [jsPsych Tutorial](https://www.jspsych.org/tutorials/rt-task/). The task is to press one key for a blue colored circle and another key for an orange colored circle.
 
@@ -26,13 +26,13 @@ We prove an example on how to implements the yaml file, that is, how to provide 
 
 ### Welcome and Instruction 
 Provide welcom message on the landing page.
-```
+```yaml
 welcome:
      stimulus: "Welcome to the experiment. Press any key to begin!"
 ```
 ### Give Instructions to users 
 Tip: use `>` to render content in one line. 
-```
+```yaml
 instructions:
     stimulus: >
         <p>In this experiment, a circle will appear in the center
@@ -51,7 +51,7 @@ instructions:
 ### Set Up Test Trial
 * Define the tag for the experiments, it make your life easier when you want to calculate the test results.
 * Set up the path for images and tag name for 
-```
+```yaml
 test_stimuli: 
     tag: 'test' # set the path 
     blue:
@@ -63,16 +63,17 @@ test_stimuli:
 
 fixation:
     stimulus: '<div style="font-size:60px;">+</div>'
-    durations_possibilities: [250, 500, 750, 1000, 1250, 1500, 1750, 2000]
+    durations_possibilities:
+     [250, 500, 750, 1000, 1250, 1500, 1750, 2000]
     tag: 'fixation'
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg3MTU0NTA1LDE1Mzc1MTE2NTQsLTExMj
-k5NzIwMjMsLTU0NjI0MzU1NSwtMTI5ODY2ODA3MSw5MTQ5MDIy
-ODIsMTkxNzg1MDk0OSwtNzA4MzY5MjA3LC0xNzU1MTYwMTA2LD
-k5NzA4MDgyMiwxMTg5OTgwNzM0LDE2MDkyOTcxNTAsLTQ5MTYz
-NTQ3OSwtMTk0MDY5MjE0MCwtODY0MzAzMDUxLC03MzkzNjUxND
-AsMTU4MTQ2Mzk4NiwtMTA1OTQzNzU3MywyOTY2NTI0NzMsMTc4
-ODc5NTQ3NV19
+eyJoaXN0b3J5IjpbLTIyODEwNDk5MCwxNTM3NTExNjU0LC0xMT
+I5OTcyMDIzLC01NDYyNDM1NTUsLTEyOTg2NjgwNzEsOTE0OTAy
+MjgyLDE5MTc4NTA5NDksLTcwODM2OTIwNywtMTc1NTE2MDEwNi
+w5OTcwODA4MjIsMTE4OTk4MDczNCwxNjA5Mjk3MTUwLC00OTE2
+MzU0NzksLTE5NDA2OTIxNDAsLTg2NDMwMzA1MSwtNzM5MzY1MT
+QwLDE1ODE0NjM5ODYsLTEwNTk0Mzc1NzMsMjk2NjUyNDczLDE3
+ODg3OTU0NzVdfQ==
 -->
