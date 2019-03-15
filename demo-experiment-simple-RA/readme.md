@@ -21,7 +21,7 @@ This is a demo documentation for `simple experiment`. The **structure** of this 
 
 The HTML file is the skeleton of the behavioral experiment. It mainly utilizes JavaScript library  [jsPysch](https://www.jspsych.org/) to implement the interactive experiment. YAML file is to provide parameters for the skeleton of the experiment of HTML file. 
 
-## How to use YAML file
+## How to Modify YAML file
 We prove an example on how to implements the yaml file, that is, how to provide parameter for the skeleton for the experiments.
 
 ### Welcome and Instruction 
@@ -75,11 +75,11 @@ fixation:
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA3MDU3OTYwLDE1Mzc1MTE2NTQsLTExMj
-k5NzIwMjMsLTU0NjI0MzU1NSwtMTI5ODY2ODA3MSw5MTQ5MDIy
-ODIsMTkxNzg1MDk0OSwtNzA4MzY5MjA3LC0xNzU1MTYwMTA2LD
-k5NzA4MDgyMiwxMTg5OTgwNzM0LDE2MDkyOTcxNTAsLTQ5MTYz
-NTQ3OSwtMTk0MDY5MjE0MCwtODY0MzAzMDUxLC03MzkzNjUxND
-AsMTU4MTQ2Mzk4NiwtMTA1OTQzNzU3MywyOTY2NTI0NzMsMTc4
-ODc5NTQ3NV19
+eyJoaXN0b3J5IjpbLTE0NTExMDEwMzMsMTA3MDU3OTYwLDE1Mz
+c1MTE2NTQsLTExMjk5NzIwMjMsLTU0NjI0MzU1NSwtMTI5ODY2
+ODA3MSw5MTQ5MDIyODIsMTkxNzg1MDk0OSwtNzA4MzY5MjA3LC
+0xNzU1MTYwMTA2LDk5NzA4MDgyMiwxMTg5OTgwNzM0LDE2MDky
+OTcxNTAsLTQ5MTYzNTQ3OSwtMTk0MDY5MjE0MCwtODY0MzAzMD
+UxLC03MzkzNjUxNDAsMTU4MTQ2Mzk4NiwtMTA1OTQzNzU3Mywy
+OTY2NTI0NzNdfQ==
 -->
