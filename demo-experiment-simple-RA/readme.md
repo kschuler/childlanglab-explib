@@ -44,7 +44,7 @@ Provide welcom message on the landing page.
 welcome:
      stimulus: "Welcome to the experiment. Press any key to begin!"
 ```
-- ###  **2. Give Instructions to users **
+- ###  **2. Give Instructions to users**
 {: toc}
 
 Tip: use `>` to render content in one line. 
@@ -88,11 +88,11 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NzI3Mzk0ODUsLTQ1NjA3NjgyNSw2Mz
-EyNzg2OTMsMTU5NzY4NTYxNCwyOTkyMjkxNTMsLTk4NjI1OTE2
-MCwtMTIwODkwMzUyNCwtNDE3NjIzOTQwLC03ODAzNjc2ODQsLT
-Y5NTQ3MjIxMSwtNzgwMzY3Njg0LC00MjA0MzUyMDAsLTIwMDg0
-NzU4OTAsMTkzMzE1OTg1NiwtMTU2NTYxMDYyMiwtMzA5MTIxMz
-AxLDEzMjAyODU4OTUsMTY4MTc3NzM2MSwyMTAzNzcyMTgxLC0x
-NzIxMzc5NjQ3XX0=
+eyJoaXN0b3J5IjpbMTExNjIyOTE0OSwtNDU2MDc2ODI1LDYzMT
+I3ODY5MywxNTk3Njg1NjE0LDI5OTIyOTE1MywtOTg2MjU5MTYw
+LC0xMjA4OTAzNTI0LC00MTc2MjM5NDAsLTc4MDM2NzY4NCwtNj
+k1NDcyMjExLC03ODAzNjc2ODQsLTQyMDQzNTIwMCwtMjAwODQ3
+NTg5MCwxOTMzMTU5ODU2LC0xNTY1NjEwNjIyLC0zMDkxMjEzMD
+EsMTMyMDI4NTg5NSwxNjgxNzc3MzYxLDIxMDM3NzIxODEsLTE3
+MjEzNzk2NDddfQ==
 -->
