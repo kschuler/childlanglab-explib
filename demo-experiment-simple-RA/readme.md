@@ -15,7 +15,6 @@ nav_order: 21
 
 *  ## Goal for this Simple Experiments
 {:toc}
-
 This simple experiment is from [jsPsych Tutorial](https://www.jspsych.org/tutorials/rt-task/). The task is to press one key for a blue colored circle and another key for an orange colored circle.
 
 *  ## The Structure of  the Simple Experiment
@@ -85,11 +84,11 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4MTUyNDg5NiwtNzgwMzY3Njg0LC02OT
-U0NzIyMTEsLTc4MDM2NzY4NCwtNDIwNDM1MjAwLC0yMDA4NDc1
-ODkwLDE5MzMxNTk4NTYsLTE1NjU2MTA2MjIsLTMwOTEyMTMwMS
-wxMzIwMjg1ODk1LDE2ODE3NzczNjEsMjEwMzc3MjE4MSwtMTcy
-MTM3OTY0NywtNDMwMTMxMTk0LC0xNDQ4NDU1NzUwLC0xMzAyMj
-Y4Njg5LC0xOTc4MTc3MDk2LDQ0NzAzMjU1OCwtMjA2OTM1OTAw
-NCw3NTcxMjc0OTVdfQ==
+eyJoaXN0b3J5IjpbMzA4OTg4OTE0LC03ODAzNjc2ODQsLTY5NT
+Q3MjIxMSwtNzgwMzY3Njg0LC00MjA0MzUyMDAsLTIwMDg0NzU4
+OTAsMTkzMzE1OTg1NiwtMTU2NTYxMDYyMiwtMzA5MTIxMzAxLD
+EzMjAyODU4OTUsMTY4MTc3NzM2MSwyMTAzNzcyMTgxLC0xNzIx
+Mzc5NjQ3LC00MzAxMzExOTQsLTE0NDg0NTU3NTAsLTEzMDIyNj
+g2ODksLTE5NzgxNzcwOTYsNDQ3MDMyNTU4LC0yMDY5MzU5MDA0
+LDc1NzEyNzQ5NV19
 -->
