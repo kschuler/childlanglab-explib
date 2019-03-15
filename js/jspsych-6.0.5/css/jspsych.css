@@ -9,6 +9,10 @@
 
 /* Container holding jsPsych content */
 
+head {
+    color: red;
+}
+
  .jspsych-display-element {
    display: flex;
    flex-direction: column;
