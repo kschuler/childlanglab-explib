@@ -34,12 +34,12 @@ This is a demo documentation for `simple experiment`. The **structure** of this 
 The HTML file is the skeleton of the behavioral experiment. It mainly utilizes JavaScript library  [jsPysch](https://www.jspsych.org/) to implement the interactive experiment. YAML file is to provide parameters for the skeleton of the experiment of HTML file. 
 
 ### How to Modify YAML file?
-{:toc}
+{: toc}
 
 We prove an example on how to implements the yaml file, that is, how to provide parameter for the skeleton for the experiments.
 
 ####  1. Welcome and Instruction 
-{:toc}
+{: toc}
 
 Provide welcom message on the landing page.
 ```yaml
@@ -47,7 +47,7 @@ welcome:
      stimulus: "Welcome to the experiment. Press any key to begin!"
 ```
 #### 2. Give Instructions to users 
-{:toc}
+{: toc}
 
 Tip: use `>` to render content in one line. 
 ```yaml
@@ -90,7 +90,7 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MDY1MzIwMzgsNDQ3MDMyNTU4LC0yMD
+eyJoaXN0b3J5IjpbLTE5NzgxNzcwOTYsNDQ3MDMyNTU4LC0yMD
 Y5MzU5MDA0LDc1NzEyNzQ5NSwtMjI4NDUyNjAzLC02MTM4NzM5
 OSwyMTEzMDgxNTgxLC0xODUzMTA3MjkzLC0xNDUxMTAxMDMzLD
 EwNzA1Nzk2MCwxNTM3NTExNjU0LC0xMTI5OTcyMDIzLC01NDYy
