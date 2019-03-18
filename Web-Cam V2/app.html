@@ -72,15 +72,46 @@
             console.log('started recording! Do whatever you need to');
         });
 
+//        // user completed recording and stream is available
+//        // Upload the Blob to your server or download it locally !
+//        player.on('finishRecord', function() {
+//
+//            // the blob object contains the recorded data that
+//            // can be downloaded by the user, stored on server etc.
+//            var videoBlob = player.recordedData.video;
+//
+//            console.log('finished recording: ', videoBlob);
+//        });
+            
+            
         // user completed recording and stream is available
-        // Upload the Blob to your server or download it locally !
         player.on('finishRecord', function() {
-
             // the blob object contains the recorded data that
             // can be downloaded by the user, stored on server etc.
-            var videoBlob = player.recordedData.video;
+            console.log('finished recording: ', player.recordedData);
 
-            console.log('finished recording: ', videoBlob);
+            // Create an instance of FormData and append the video parameter that
+            // will be interpreted in the server as a file
+            var formData = new FormData();
+            formData.append('video', player.recordedData.video);
+
+            // Execute the ajax request, in this case we have a very simple PHP script
+            // that accepts and save the uploaded "video" file
+            xhr('./upload-video.php', formData, function (fName) {
+                console.log("Video succesfully uploaded !");
+            });
+
+            // Helper function to send 
+            function xhr(url, data, callback) {
+                var request = new XMLHttpRequest();
+                request.onreadystatechange = function () {
+                    if (request.readyState == 4 && request.status == 200) {
+                        callback(location.href + request.responseText);
+                    }
+                };
+                request.open('POST', url);
+                request.send(data);
+            }
         });
         </script>
     </body>
