@@ -5,7 +5,7 @@ nav_order: 21
 ---
 # Documentation for Whack-a-mole
 {: .no_toc  }
-* This documentation is written for `Whack-a-mole` game, try this simple experiment [Here](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RT/demo-experiment-simple-RT.html)
+* This documentation is written for `Whack-a-mole` game, try this simple experiment [Here](http://www.kathrynschuler.com/experiment-library/WAM-JS/original-whack-a-mole.html)
 * Source code for this documentation is hosted in [GitHub](https://github.com/kschuler/experiment-library/tree/master/demo-experiment-simple-RA)
 * Visit this [Documentation](http://www.kathrynschuler.com/experiment-library/demo-experiment-simple-RA/readme.html)
 
@@ -88,5 +88,5 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk1MTkwODE1M119
+eyJoaXN0b3J5IjpbNjA5NTExNzMyXX0=
 -->
