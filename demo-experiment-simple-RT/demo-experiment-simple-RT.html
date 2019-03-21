@@ -160,7 +160,14 @@
       stimulus: PARAMS.welcome.stimulus
     };
     timeline.push(welcome);
-
+    
+    /* Open the web-cam, record video and audio from the user*/
+    var recorder = {
+        type: "html-keybord-response",
+        stimulus: PARAMS.recorder.stimulus
+    };
+    timeline.push(recorder);
+      
     /* define instructions trial */
     var instructions = {
       type: "html-keyboard-response",
@@ -172,8 +179,10 @@
     /* test trials */
     var test_stimuli = [
         // define each choices and its tag and correct answer
-      { stimulus: PARAMS.test_stimuli.blue.path, data: { test_part: PARAMS.test_stimuli.tag, correct_response: PARAMS.test_stimuli.blue.key } },
-      { stimulus: PARAMS.test_stimuli.orange.path, data: { test_part: PARAMS.test_stimuli.tag, correct_response: PARAMS.test_stimuli.orange.key} }
+      { stimulus: PARAMS.test_stimuli.blue.path, 
+         data: { test_part: PARAMS.test_stimuli.tag, correct_response: PARAMS.test_stimuli.blue.key } },
+      { stimulus: PARAMS.test_stimuli.orange.path, 
+         data: { test_part: PARAMS.test_stimuli.tag, correct_response: PARAMS.test_stimuli.orange.key} }
     ];
 
     var fixation = {
@@ -198,7 +207,7 @@
       },
     }
 
-    //
+    
     var test_procedure = {
       timeline: [fixation, test],
       timeline_variables: test_stimuli,
@@ -212,7 +221,7 @@
       type: "html-keyboard-response",
       stimulus: function() {
 
-        // select the data with tag "test", the data with tag "fixation" is not selected.
+        // select the data with tag "test", the data with tag "fixation" are not selected.
         var trials = jsPsych.data.get().filter({test_part: PARAMS.test_stimuli.tag});
         // select the data that is "correct".
         var correct_trials = trials.filter({correct: true});
@@ -226,7 +235,9 @@
       }
     };
     timeline.push(debrief_block);
+      
 
+    
     /* start the experiment */
     jsPsych.init({
       timeline: timeline,

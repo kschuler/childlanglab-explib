@@ -21,6 +21,13 @@ instructions:
         </div>
         <p>Press any key to begin.</p>
 
+
+# --------------- WEB-CAM RECORDER -----------------#
+recorder:
+    stimulus: >
+        
+
+
 # ----------------TEST TRIAL --------------------#
 test_stimuli:
     tag: 'test'
