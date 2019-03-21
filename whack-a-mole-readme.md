@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Simple Experiment
+title:  Whack-a-mole
 nav_order: 21
 ---
 # Documentation for Whack-a-mole
@@ -88,5 +88,5 @@ fixation:
     tag: 'fixation'# set the tag for fixation.
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5MDc0MTYxNV19
+eyJoaXN0b3J5IjpbLTQ5MDIyMTM2OF19
 -->
