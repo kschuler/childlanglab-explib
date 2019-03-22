@@ -7,6 +7,22 @@
   font-weight: 300;
   color: #383838;
 }
+.timer {
+/*    display: none;*/
+
+    margin-top: 56%;
+    margin-left: 13%;
+    margin-right: 10%;
+}
+
+/*
+#timer {
+   display: none;
+}
+*/
+.hide  {
+  opacity: 0;
+}
 
 body {
   background: #fff19e;
@@ -45,6 +61,8 @@ h1 {
 .start-screen.hide {
   display: none;
 }
+
+
 
 .show-score {
   display: none;
@@ -85,7 +103,8 @@ h1 {
 }
 
 .button button.hide {
-  opacity: 0;
+/*    display: none;*/
+    opacity: 0;
 }
 
 .score-block {
@@ -120,7 +139,7 @@ h1 {
 }
 
 .hole {
-  flex: 1 0 33.33%;
+  flex: 1 0 33%;
   overflow: hidden;
   position: relative;
 }

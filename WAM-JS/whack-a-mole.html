@@ -2,7 +2,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Simple experiment!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New Whack-a-mole!</title>
 
      <!-- add jspsych.js-->
     <script src="../js/jspsych-6.0.5/jspsych.js"></script>
@@ -13,17 +16,20 @@
      <!-- libraries required for YAML parsing -->
     <script src="../js/yaml.js" type="text/javascript"></script>
 
-     <!-- stylesheets for making everything pretty -->
-
+     <!-- stylesheets from jspsych -->
     <link href="../js/jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css"></link>
-
+    <!-- fonts   -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <!-- customized stylesheets  -->
+    <link rel="stylesheet" href="css/main.css">
   </head>
   <script>
     /* load the paramter file as object and save in variable */
     var PARAMS = YAML.load('params.yaml');
     //console.log(PARAMS.welcome)
     var timeline = [];
-
+      
+      
     /* define welcome message trial */
     var welcome = {
       type: "html-keyboard-response",
@@ -31,12 +37,6 @@
     };
     timeline.push(welcome);
     
-//    /* Open the web-cam, record video and audio from the user*/
-//    var recorder = {
-//        type: "html-keybord-response",
-//        stimulus: PARAMS.recorder.stimulus
-//    };
-//    timeline.push(recorder);
       
     /* define instructions trial */
     var instructions = {
@@ -45,7 +45,17 @@
       post_trial_gap: 2000
     };
     timeline.push(instructions);
-
+      
+      
+      
+      
+    /*Game*/
+    var games = {
+        type: "html-keyboard-response",
+        stimulus: PARAMS.game.stimulus
+    }
+    timeline.push(games);
+      
     /* test trials */
     var test_stimuli = [
         // define each choices and its tag and correct answer
@@ -54,7 +64,7 @@
       { stimulus: PARAMS.test_stimuli.orange.path, 
          data: { test_part: PARAMS.test_stimuli.tag, correct_response: PARAMS.test_stimuli.orange.key} }
     ];
-
+      
     var fixation = {
       type: 'html-keyboard-response',
       stimulus:  PARAMS.fixation.stimulus,
