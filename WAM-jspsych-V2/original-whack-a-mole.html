@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Whack-a-mole!</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="../js/jspsych-6.0.5/jspsych.js"></script>
+   <!-- libraries required for YAML parsing -->
+  <script src="../js/yaml.js" type="text/javascript"></script>
+   
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    
+<div class="outer">
+    
+    <div id="start"></div>
+    <!-- Holes and Moles goes here via JavaScript   -->
+    
+</div>
+    
+<div class="start-screen">
+<div class="splash-screen">
+  <div class="button">
+    <button>Start</button>
+    <div class="show-score"></div>
+  </div>
+   <div class = "timer hide">You did a great job!  Game will restart in <span id="time">00:00</span> minutes!</div>
+</div>
+</div>
+    
+
+  <div class="score-block">
+    <span class="score">0</span>
+  </div>
+
+  <audio src="sounds/bonk.WAV"></audio>
+<!--  <script src="js/app.js"></script>-->
+    
+  <script> 
+    var PARAMS = YAML.load('params.yaml');
+    // load parameters from the params.yaml.  
+    let score = 0;
+    let repeatCount = 0;
+    let lastHole;
+    let Rest = PARAMS.setup.time;
+    let popSequence = PARAMS.setup.sequence;
+    let unitLenth = PARAMS.setup.unitLenth;
+    let maxRepeat = PARAMS.setup.maxRepeat;
+    let Positions = PARAMS.setup.positions;
+    let holeNum = PARAMS.setup.holeNum; 
+    let peepMin = PARAMS.setup.peepMinTime;  
+    let peepMax = PARAMS.setup.peepMaxTime;  
+    let restSeconds = PARAMS.setup.restTime; 
+    
+    let myInterval;        
+    const scoreBoard = document.querySelector('.score');
+    const btnStart = document.querySelector('button');
+    const bonkSound = document.querySelector('audio');
+    const startScreen = document.querySelector('.start-screen');
+    const showScore = document.querySelector('.show-score');
+    const timer = document.querySelector('.timer');
+      
+    /* load the paramter file as object and save in variable */
+    console.log(popSequence);
+
+    //var timeline = [];
+    function generateHoles() {
+      var AllHoles = [];// the html that denotes holes.
+      // var Positions = [20,500,20,1000,220,500,220,1000];     
+      for (var i = 1; i <= holeNum/* 4 */; i++) {
+          var holei = "<div style=\"top:"+Positions[i*2-2]+"px;left:"+Positions[i*2-1]+"px;\" class=\"hole hole"+i+"\"><div class=\"mole\"></div> </div>";
+          AllHoles.push(holei);
+      }
+      $("#start").after(AllHoles); 
+      // Insert HTML elements after #start
+
+    }
+    generateHoles(); 
+    const holes = document.querySelectorAll('.hole');
+    const moles = document.querySelectorAll('.mole');
+    let hole;  
+  
+    function randomTime(min, max) {
+      return Math.round( Math.random() * (max - min) + min );
+    }
+
+    function selectPopHole(holes, i) {
+      const idx = popSequence[i];
+      const hole = holes[idx];
+      return hole;
+    }
+
+    //============BEGINNING OF HEAVYLIFTING PART====================================    
+    // !!!! convert, one peep is one trial  
+    let i = 0; // i denotes the i-th element in the equense.
+    function peep() {
+      const popTime = randomTime(0, 0);
+      console.log('Peep!');
+      // Reset i when reach the end of holes
+      console.log('i = ' + i + ", holeNum = " + holeNum);    
+      if ( i >= holeNum ) {peepMin
+          console.log('Reset i = 0!');
+          i = 0; 
+      }
+      hole = selectPopHole(holes, i++);
+      console.log("hole = " + hole);  
+      // When go through a sequence, increment the repeat counter.
+      if (i == popSequence.length) {
+        repeatCount++;
+        console.log('repeatCount = ' + repeatCount);  
+      }   
+      hole.classList.add('up');
+        
+      // This part allows the mole to dispear after a certain time.
+      // finish a peep in each unit game
+      /*              setTimeout(() => {
+                  
+                  
+                  
+                hole.classList.remove('up');
+                scoreBoard.classList.remove('add');
+                if (repeatCount != maxRepeat) { Rest = false; peep();}
+                else {
+                    Rest = true;
+                    console.log('Rest  =' + Rest);
+                    timer.classList.remove('hide');
+                    startScreen.classList.remove('hide');
+                    btnStart.classList.add('hide');
+                    setTimeout(()=>{btnStart.classList.remove('hide');}, 2000);
+                    showScore.classList.add('show');
+                    const message = 'Your score: ' + score + (score >= 20 ? " GREAT!" : '');
+                    showScore.textContent = message;
+                    const display = document.querySelector('#time');
+                    startTimer(restSeconds, display);  
+                }  
+                  
+                  
+              }, popTime);*/
+    }//end peep
+   
+    function Start() {
+      console.log('Start a new block !!!!!!!!!!!!!!!!');
+      // Reset the parameter(timeline variables)
+      score = 0;
+      repeatCount = 0;  
+      Rest = false;
+      clearInterval(myInterval);
+          
+      scoreBoard.textContent = score;
+      scoreBoard.classList.remove('add');
+      startScreen.classList.add('hide');
+      peep();   
+    }
+    
+    // Convert to image button response?
+    // how to update parameter at the same time ?
+    function bonk(e) {
+      bonkSound.currentTime = 0;
+      console.log("bonk!");
+      if (!Rest) {
+      
+        hole.classList.remove('up');
+        scoreBoard.classList.remove('add');
+        if (repeatCount != maxRepeat) { Rest = false; peep();}
+        else {
+            Rest = true;
+            console.log('Rest  =' + Rest);
+            timer.classList.remove('hide');
+            startScreen.classList.remove('hide');
+            btnStart.classList.add('hide');
+            setTimeout(()=>{btnStart.classList.remove('hide');}, 2000);
+            showScore.classList.add('show');
+            const message = 'Your score: ' + score + (score >= 20 ? " GREAT!" : '');
+            showScore.textContent = message;
+            const display = document.querySelector('#time');
+            startTimer(restSeconds, display);  
+        }    
+
+        bonkSound.play();
+        scoreBoard.classList.add('add');
+        score++;
+        scoreBoard.textContent = score;
+      }
+    }
+      
+    // image botton response
+    moles.forEach( mole => {
+      mole.addEventListener('click', bonk);
+    } );
+    btnStart.addEventListener('click', Start);
+      
+    //========= ENDING OF HEAVYLIFTING PART  ================================    
+      
+      
+      
+      
+    function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        display.textContent  = "";
+        myInterval = setInterval(function () {
+            minutes = parseInt(timer / 60, 10)
+            seconds = parseInt(timer % 60, 10);
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            display.textContent = minutes + ":" + seconds;
+            if (--timer < 0) {
+                timer = duration;
+                Start();
+            }
+        }, 1000);
+    }
+  </script>>
+</body>
+</html>

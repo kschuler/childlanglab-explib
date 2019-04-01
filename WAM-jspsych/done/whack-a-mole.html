@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New Whack-a-mole!</title>
+
+     <!-- add jspsych.js-->
+    <script src="../js/jspsych-6.0.5/jspsych.js"></script>
+     <!-- add jspsych plugins-->
+    <script src="../js/jspsych-6.0.5/plugins/jspsych-html-keyboard-response.js"></script>
+    <script src="../js/jspsych-6.0.5/plugins/jspsych-image-keyboard-response.js"></script>
+     
+     <!-- libraries required for YAML parsing -->
+    <script src="../js/yaml.js" type="text/javascript"></script>
+
+     <!-- stylesheets from jspsych -->
+    <link href="../js/jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+    <!-- fonts   -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <!-- customized stylesheets  -->
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <script>
+    /* load the paramter file as object and save in variable */
+    var PARAMS = YAML.load('params.yaml');
+    //console.log(PARAMS.welcome)
+    var timeline = [];
+      
+      
+    /* define welcome message trial */
+    var welcome = {
+      type: "html-keyboard-response",
+      stimulus: PARAMS.welcome.stimulus
+    };
+    timeline.push(welcome);
+    
+      
+    /* define instructions trial */
+    var instructions = {
+      type: "html-keyboard-response",
+      stimulus: PARAMS.instructions.stimulus,
+      post_trial_gap: 2000
+    };
+    timeline.push(instructions);
+      
+      
+      
+      
+    /*Game*/
+    var games = {
+        type: "html-keyboard-response",
+        stimulus: PARAMS.game.stimulus
+    }
+    timeline.push(games);
+      
+    /* test trials */
+    var test_stimuli = [
+        // define each choices and its tag and correct answer
+      { stimulus: PARAMS.test_stimuli.blue.path, 
+         data: { test_part: PARAMS.test_stimuli.tag, correct_response: PARAMS.test_stimuli.blue.key } },
+      { stimulus: PARAMS.test_stimuli.orange.path, 
+         data: { test_part: PARAMS.test_stimuli.tag, correct_response: PARAMS.test_stimuli.orange.key} }
+    ];
+      
+    var fixation = {
+      type: 'html-keyboard-response',
+      stimulus:  PARAMS.fixation.stimulus,
+      choices: jsPsych.NO_KEYS,
+      trial_duration: function(){
+        // get a random option from a list
+        return jsPsych.randomization.sampleWithoutReplacement( PARAMS.fixation.durations_possibilities, 1)[0];
+      },
+      data: {test_part: PARAMS.fixation.tag}
+    }
+
+    var test = {
+      type: "image-keyboard-response",
+      stimulus: jsPsych.timelineVariable('stimulus'),
+      choices: [PARAMS.test_stimuli.blue.key, PARAMS.test_stimuli.orange.key],
+      data: jsPsych.timelineVariable('data'),
+      on_finish: function(data){
+        // if the user select the answer is equal to the correct answer, then the result is correct.
+        data.correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response);
+      },
+    }
+
+    
+    var test_procedure = {
+      timeline: [fixation, test],
+      timeline_variables: test_stimuli,
+      repetitions: 5,
+      randomize_order: true
+    }
+    timeline.push(test_procedure);
+
+    /* define debrief */
+    var debrief_block = {
+      type: "html-keyboard-response",
+      stimulus: function() {
+
+        // select the data with tag "test", the data with tag "fixation" are not selected.
+        var trials = jsPsych.data.get().filter({test_part: PARAMS.test_stimuli.tag});
+        // select the data that is "correct".
+        var correct_trials = trials.filter({correct: true});
+        var accuracy = Math.round(correct_trials.count() / trials.count() * 100);
+        var rt = Math.round(correct_trials.select('rt').mean());
+
+        return "<p>You responded correctly on "+accuracy+"% of the trials.</p>"+
+        "<p>Your average response time was "+rt+"ms.</p>"+
+        "<p>Press any key to complete the experiment. Thank you!</p>";
+
+      }
+    };
+    timeline.push(debrief_block);
+      
+
+    
+    /* start the experiment */
+    jsPsych.init({
+      timeline: timeline,
+      on_finish: function() {
+        // after finish the experiment, display the basic result of the experiment.
+        jsPsych.data.displayData();
+      }
+    });
+  </script>
+</html>
