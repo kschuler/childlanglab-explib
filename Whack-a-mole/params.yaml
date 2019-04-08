@@ -18,11 +18,6 @@ message:
      beginMessage: "Welcome to Whack-a-mole. Press any key to begin!"
      endMessage: "Thank you!"
      
-# ---------------- INSTRUCTIONS ------------------#
 
-# --------------- Game(Exposure) -----------------#
-
-# ----------------TEST TRIAL --------------------#
-    # test_stimuli:
 
 
