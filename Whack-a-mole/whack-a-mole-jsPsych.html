@@ -55,6 +55,7 @@
           var holei = "<div style=\"top:"+Positions[i*2-2]+"px;left:"+Positions[i*2-1]+"px;\" class=\"hole hole"+i+"\"><div class=\"mole\"></div> </div>";
           AllHoles.push(holei);
       }
+      // use jQuery to add HTML element.
       $(".jspsych-content-wrapper").after(AllHoles); 
       $(".jspsych-content-wrapper").after(basic);    
       score = 0;
@@ -63,7 +64,7 @@
     cleanHoles = function cleanHoles(){
         var empty = "";
         console.log("cleanHoles!");
-        //scoreBoard.textContent = 3;
+        // use jQuery to remove HTML element.
         $(".hole").remove(); 
         $("audio").remove();
     }
