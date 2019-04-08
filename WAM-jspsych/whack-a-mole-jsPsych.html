@@ -1,117 +1,171 @@
-
 <!DOCTYPE html>
 <html>
   <head>
     <title>Whack-a-mole-jsPsych!</title>
-
+     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+     <link rel="stylesheet" href="css/main.css">
      <!-- add jspsych.js-->
-    <script src="../js/jspsych-6.0.5/jspsych.js"></script>
+     <script src="../js/jspsych-6.0.5/jspsych.js"></script>
      <!-- add jspsych plugins-->
-    <script src="../js/jspsych-6.0.5/plugins/jspsych-html-keyboard-response.js"></script>
-    <script src="../js/jspsych-6.0.5/plugins/jspsych-image-keyboard-response.js"></script>
-     
+     <script src="../js/jsChildLangLab/jspsych-plugin-wam.js"></script>
+     <script src="../js/jspsych-6.0.5/plugins/jspsych-survey-likert.js"></script> 
+     <script src="../js/jspsych-6.0.5/plugins/jspsych-html-keyboard-response.js"></script>
+     <script src="../js/jspsych-6.0.5/plugins/jspsych-call-function.js"></script>
+     <!-- add jQuery -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
      <!-- libraries required for YAML parsing -->
-    <script src="../js/yaml.js" type="text/javascript"></script>
-
+     <script src="../js/yaml.js" type="text/javascript"></script>
      <!-- stylesheets for making everything pretty -->
-
-    <link href="../js/jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css"></link>
-
+     <link href="../js/jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css"></link>
   </head>
-  <script>
-    /*Idea: Im*/
+<body>
+   <div class="outer">
+        <div id="start"></div>
+        <!-- Holes and Moles goes here via JS  -->
+   </div>
     
+   <script>
     /* load the paramter file as object and save in variable */
     var PARAMS = YAML.load('params.yaml');
-    //console.log(PARAMS.welcome)
+      
+    // load parameters from the params.yaml.
+       
+    let isResting = PARAMS.setup.isResting;
+    let popSequence = PARAMS.setup.popSequence;
+    let maxRepeat = PARAMS.setup.maxRepeat;
+    let Positions = PARAMS.setup.positions;
+    let holeNum = popSequence.length; 
+    let restTime = PARAMS.setup.restTime;
+    let tag = PARAMS.setup.tag;
+    let basic = PARAMS.setup.basicHTML;
+    let beginMessage = PARAMS.message.beginMessage;
+    let endMessage = PARAMS.message.endMessage;
+       
+    let score = 0;
+    const bonkSound = document.querySelector('audio');
+    const scoreBoard = document.querySelector('.score');
+    /* load the paramter file as object and save in variable */
+    console.log("popSequense = " + popSequence);
+      
+    //================HELPER FUNCTION================  
+    generateHoles = function generateHoles() {
+      console.log("generateHoles!!!");
+      var AllHoles = [];
+      for (var i = 1; i <= holeNum; i++) {
+          var holei = "<div style=\"top:"+Positions[i*2-2]+"px;left:"+Positions[i*2-1]+"px;\" class=\"hole hole"+i+"\"><div class=\"mole\"></div> </div>";
+          AllHoles.push(holei);
+      }
+      $(".jspsych-content-wrapper").after(AllHoles); 
+      $(".jspsych-content-wrapper").after(basic);    
+      score = 0;
+    }
+    
+    cleanHoles = function cleanHoles(){
+        var empty = "";
+        console.log("cleanHoles!");
+        //scoreBoard.textContent = 3;
+        $(".hole").remove(); 
+        $("audio").remove();
+    }
+    
+    //================EXPOSURE BEGIN================    
     var timeline = [];
-
     /* define welcome message trial */
     var welcome = {
       type: "html-keyboard-response",
-      stimulus: PARAMS.welcome.stimulus
+      stimulus: beginMessage
     };
     timeline.push(welcome);
+
+    /*define a single trail*/  
+    var generateHoles = {
+        type: "call-function",
+        func: generateHoles
+    }
+    var cleanHoles = {
+        type: "call-function",
+        func: cleanHoles
+    } 
     
-
+    var trail_var = [];
+    for (var i = 0; i < popSequence.length; i ++) {
+        var idx = popSequence[i];
+        var dict = {};
+        dict['idx'] = idx;
+        dict['data'] = {};
+        dict['data']['test_part'] = tag;
+        trail_var.push(dict);
+    }
       
-    /* define instructions trial */
-    var instructions = {
-      type: "html-keyboard-response",
-      stimulus: PARAMS.instructions.stimulus,
-      post_trial_gap: 2000
-    };
-    timeline.push(instructions);
-
-    /* test trials */
-    var test_stimuli = [
-        // define each choices and its tag and correct answer
-      { stimulus: PARAMS.test_stimuli.blue.path, 
-         data: { test_part: PARAMS.test_stimuli.tag, correct_response: PARAMS.test_stimuli.blue.key } },
-      { stimulus: PARAMS.test_stimuli.orange.path, 
-         data: { test_part: PARAMS.test_stimuli.tag, correct_response: PARAMS.test_stimuli.orange.key} }
-    ];
-
+    var trail = {
+        type: "show",
+        idx:  jsPsych.timelineVariable('idx'),
+        data:  jsPsych.timelineVariable('data')
+    };  
+      
     var fixation = {
       type: 'html-keyboard-response',
-      stimulus:  PARAMS.fixation.stimulus,
+      stimulus: '<div>  </div>',
       choices: jsPsych.NO_KEYS,
-      trial_duration: function(){
-        // get a random option from a list
-        return jsPsych.randomization.sampleWithoutReplacement( PARAMS.fixation.durations_possibilities, 1)[0];
-      },
-      data: {test_part: PARAMS.fixation.tag}
+      trial_duration: restTime,
     }
-
-    var test = {
-      type: "image-keyboard-response",
-      stimulus: jsPsych.timelineVariable('stimulus'),
-      choices: [PARAMS.test_stimuli.blue.key, PARAMS.test_stimuli.orange.key],
-      data: jsPsych.timelineVariable('data'),
-      on_finish: function(data){
-        // if the user select the answer is equal to the correct answer, then the result is correct.
-        data.correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response);
-      },
-    }
-
     
-    var test_procedure = {
-      timeline: [fixation, test],
-      timeline_variables: test_stimuli,
-      repetitions: 5,
-      randomize_order: true
+    var ending = {
+      type: "html-keyboard-response",
+      stimulus: endMessage
+    };
+      
+    var trails = {
+        timeline: [trail, fixation],
+        repetitions: maxRepeat,
+        timeline_variables: trail_var
+    };
+      
+    var exposure = {
+        timeline: [generateHoles, trails, cleanHoles, ending],
+        repetitions: 1
     }
-    timeline.push(test_procedure);
 
+    timeline.push( exposure );
+    
+              
+       
     /* define debrief */
     var debrief_block = {
       type: "html-keyboard-response",
       stimulus: function() {
 
         // select the data with tag "test", the data with tag "fixation" are not selected.
-        var trials = jsPsych.data.get().filter({test_part: PARAMS.test_stimuli.tag});
-        // select the data that is "correct".
-        var correct_trials = trials.filter({correct: true});
-        var accuracy = Math.round(correct_trials.count() / trials.count() * 100);
-        var rt = Math.round(correct_trials.select('rt').mean());
+        var trials = jsPsych.data.get().filter({test_part: PARAMS.setup.tag});
+        var count = Math.round(trials.count());
+        var rt = Math.round(trials.select('rt').mean());
 
-        return "<p>You responded correctly on "+accuracy+"% of the trials.</p>"+
+        return "<p>Great! You've whacked "+count+" moles.</p>"+
         "<p>Your average response time was "+rt+"ms.</p>"+
         "<p>Press any key to complete the experiment. Thank you!</p>";
-
       }
     };
     timeline.push(debrief_block);
-      
 
-    
+    //================EXPOSURE END====================== 
+       
+       
+    // defining two different response scales that can be used.
+    var scale_1 = ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"];
+
+    var likert_page = {
+        type: 'survey-likert',
+        questions: [{prompt: "I've seen the sequence [0,1]", labels: scale_1}],
+    };
+    timeline.push( likert_page );
+       
     /* start the experiment */
     jsPsych.init({
       timeline: timeline,
       on_finish: function() {
-        // after finish the experiment, display the basic result of the experiment.
         jsPsych.data.displayData();
       }
     });
   </script>
+</body>
 </html>

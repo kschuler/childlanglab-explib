@@ -8,14 +8,14 @@
  *
  **/
 
-jsPsych.plugins["image-button-response"] = (function() {
+jsPsych.plugins["click-response"] = (function() {
 
   var plugin = {};
 
   jsPsych.pluginAPI.registerPreload('image-button-response', 'stimulus', 'image');
 
   plugin.info = {
-    name: 'image-button-response',
+    name: 'click-response',
     description: '',
     parameters: {
       stimulus: {

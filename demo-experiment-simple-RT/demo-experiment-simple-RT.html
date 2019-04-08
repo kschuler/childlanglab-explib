@@ -9,12 +9,11 @@
      <!-- add jspsych plugins-->
     <script src="../js/jspsych-6.0.5/plugins/jspsych-html-keyboard-response.js"></script>
     <script src="../js/jspsych-6.0.5/plugins/jspsych-image-keyboard-response.js"></script>
-     
+
      <!-- libraries required for YAML parsing -->
     <script src="../js/yaml.js" type="text/javascript"></script>
 
      <!-- stylesheets for making everything pretty -->
-
     <link href="../js/jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css"></link>
 
 <!--
@@ -160,9 +159,9 @@
       stimulus: PARAMS.welcome.stimulus
     };
     timeline.push(welcome);
-    
 
-      
+
+
     /* define instructions trial */
     var instructions = {
       type: "html-keyboard-response",
@@ -174,21 +173,16 @@
     /* test trials */
     var test_stimuli = [
         // define each choices and its tag and correct answer
-      { stimulus: PARAMS.test_stimuli.blue.path, 
+      { stimulus: PARAMS.test_stimuli.blue.path,
          data: { test_part: PARAMS.test_stimuli.tag, correct_response: PARAMS.test_stimuli.blue.key } },
-      { stimulus: PARAMS.test_stimuli.orange.path, 
+      { stimulus: PARAMS.test_stimuli.orange.path,
          data: { test_part: PARAMS.test_stimuli.tag, correct_response: PARAMS.test_stimuli.orange.key} }
     ];
-
     var fixation = {
       type: 'html-keyboard-response',
-      stimulus:  PARAMS.fixation.stimulus,
+      stimulus: '<div style="font-size:60px;">+</div>',
       choices: jsPsych.NO_KEYS,
-      trial_duration: function(){
-        // get a random option from a list
-        return jsPsych.randomization.sampleWithoutReplacement( PARAMS.fixation.durations_possibilities, 1)[0];
-      },
-      data: {test_part: PARAMS.fixation.tag}
+      trial_duration: 1000,
     }
 
     var test = {
@@ -202,7 +196,7 @@
       },
     }
 
-    
+
     var test_procedure = {
       timeline: [fixation, test],
       timeline_variables: test_stimuli,
@@ -230,9 +224,9 @@
       }
     };
     timeline.push(debrief_block);
-      
 
-    
+
+
     /* start the experiment */
     jsPsych.init({
       timeline: timeline,

@@ -11,7 +11,8 @@
    <!-- libraries required for YAML parsing -->
   <script src="../js/yaml.js" type="text/javascript"></script>
    
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+  </script>
 </head>
 <body>
     
@@ -77,7 +78,6 @@
       }
       $("#start").after(AllHoles); 
       // Insert HTML elements after #start
-
     }
     generateHoles(); 
     const holes = document.querySelectorAll('.hole');
@@ -97,15 +97,18 @@
     //============BEGINNING OF HEAVYLIFTING PART====================================    
     // !!!! convert, one peep is one trial  
     let i = 0; // i denotes the i-th element in the equense.
+      
     function peep() {
-      const popTime = randomTime(0, 0);
+      // const popTime = randomTime(0, 0);
       console.log('Peep!');
       // Reset i when reach the end of holes
       console.log('i = ' + i + ", holeNum = " + holeNum);    
-      if ( i >= holeNum ) {peepMin
+      if ( i >= holeNum ) {
           console.log('Reset i = 0!');
           i = 0; 
       }
+        
+      // how to call another function?
       hole = selectPopHole(holes, i++);
       console.log("hole = " + hole);  
       // When go through a sequence, increment the repeat counter.
