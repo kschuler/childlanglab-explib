@@ -13,7 +13,7 @@ setup:
         <audio src="sounds/bonk.WAV"></audio>
 
 
-# ------------- WELCOME MESSAGE ---------------#
+# -------------  MESSAGE ---------------#
 message:
      beginMessage: "Welcome to Whack-a-mole. Press any key to begin!"
      endMessage: "Thank you!"
