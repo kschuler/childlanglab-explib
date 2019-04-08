@@ -1,14 +1,14 @@
 
 # ---------------- SETUP PARAMETER -----------------#
 setup:
-    isResting: false
+    #isResting: false
     popSequence: [0,1] 
     # the 1st item is 0, it means the 1st mole will pop up from the 1st hole.
     positions: [ 20,500,  20,1000  ] 
     # In each pair, it denotes the distance to left and top boundary.
     maxRepeat : 2 # the max number of repeat sequence
     restTime: 500 # miliseconds.
-    tag: 'peep'
+    tag: 'test'
     basicHTML: >
         <audio src="sounds/bonk.WAV"></audio>
 
