@@ -15,7 +15,7 @@ setup:
 
 # ------------- WELCOME MESSAGE ---------------#
 message:
-     beginMessage: "Welcome to Whack-a-mock. Press any key to begin!"
+     beginMessage: "Welcome to Whack-a-mole. Press any key to begin!"
      endMessage: "Thank you!"
      
 # ---------------- INSTRUCTIONS ------------------#
