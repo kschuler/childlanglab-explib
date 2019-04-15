@@ -22,7 +22,7 @@ jsPsych.plugins["show"] = (function() {
     const bonkSound = document.querySelector('audio');
     const scoreBoard = document.querySelector('.score');
     var i = trial.idx; 
-      console.log( "i = " + i);
+    //console.log( "i = " + i);
     let hole = holes[i];
       
     hole.classList.add('up');
@@ -31,13 +31,11 @@ jsPsych.plugins["show"] = (function() {
       console.log("bonk!");
       hole = holes[i];
       hole.classList.remove('up');
-      //scoreBoard.classList.remove('add');
       bonkSound.play();
+      //scoreBoard.classList.remove('add');
       //scoreBoard.classList.add('add');
-      score++;
-      console.log("score = "+score);
-      
-      
+      //console.log("score = "+score);
+      //score++;
       afterResponse();    
     }
       
@@ -51,8 +49,7 @@ jsPsych.plugins["show"] = (function() {
     // store response
     var response = {
       rt: null,
-      button: null
-      //correct: false    
+      button: null  
     };
       
     // function to handle responses by the subject
@@ -66,9 +63,7 @@ jsPsych.plugins["show"] = (function() {
       // measure rt
       var end_time = performance.now();
       var rt = end_time - start_time;
-      // response.button = choice;
       response.rt = rt;
-      //correct = true;
       end_trial();
         
     };   

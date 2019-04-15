@@ -29,23 +29,24 @@
     var PARAMS = YAML.load('params.yaml');
       
     // load parameters from the params.yaml.
-       
-    //let isResting = PARAMS.setup.isResting;
-    let popSequence = PARAMS.setup.popSequence;
-    let maxRepeat = PARAMS.setup.maxRepeat;
+    let wholeSeq = PARAMS.setup.wholeSeq;
+    let testSeqs = PARAMS.setup.testSeqs;
+    let blockNum = PARAMS.setup.blockNum;
     let Positions = PARAMS.setup.positions;
-    let holeNum = popSequence.length; 
-    let restTime = PARAMS.setup.restTime;
-    let tag = PARAMS.setup.tag;
+    let holeNum = Positions.length/2;
+    let trailTag = PARAMS.setup.trailTag;
+    let testTag = PARAMS.setup.testTag;
     let basic = PARAMS.setup.basicHTML;
     let beginMessage = PARAMS.message.beginMessage;
     let endMessage = PARAMS.message.endMessage;
+    let popGap = PARAMS.setup.popGap;
+    let restTime = PARAMS.setup.restTime;
        
     let score = 0;
     const bonkSound = document.querySelector('audio');
     const scoreBoard = document.querySelector('.score');
     /* load the paramter file as object and save in variable */
-    console.log("popSequense = " + popSequence);
+    console.log("popSequense = " + wholeSeq);
       
     //================HELPER FUNCTION================  
     generateHoles = function generateHoles() {
@@ -88,14 +89,15 @@
         func: cleanHoles
     } 
     
-    var trail_var = [];
-    for (var i = 0; i < popSequence.length; i ++) {
-        var idx = popSequence[i];
+    /*define timeline variable*/  
+    var block_var = [];
+    for (var i = 0; i < wholeSeq.length; i ++) {
+        var idx = wholeSeq[i];
         var dict = {};
         dict['idx'] = idx;
         dict['data'] = {};
-        dict['data']['test_part'] = tag;
-        trail_var.push(dict);
+        dict['data']['test_part'] = trailTag;
+        block_var.push(dict);
     }
       
     var trail = {
@@ -103,41 +105,47 @@
         idx:  jsPsych.timelineVariable('idx'),
         data:  jsPsych.timelineVariable('data')
     };  
-      
-    var fixation = {
+    var gap = {
       type: 'html-keyboard-response',
-      stimulus: '<div>  </div>',
+      stimulus: '<div> </div>',
+      choices: jsPsych.NO_KEYS,
+      trial_duration: popGap,
+    }
+      
+        
+    var block = {
+        timeline: [trail, gap],
+        repetitions: 1,
+        timeline_variables: block_var
+    };
+       
+    var rest = {
+      type: 'html-keyboard-response',
+      stimulus: '<div> Rest!</div>',
       choices: jsPsych.NO_KEYS,
       trial_duration: restTime,
     }
-    
-    var ending = {
-      type: "html-keyboard-response",
-      stimulus: endMessage
-    };
-      
-    var trails = {
-        timeline: [trail, fixation],
-        repetitions: maxRepeat,
-        timeline_variables: trail_var
-    };
+       
+    var blocks = {
+        timeline: [block,rest],
+        repetitions: blockNum,
+    }
       
     var exposure = {
-        timeline: [generateHoles, trails, cleanHoles, ending],
+        timeline: [ generateHoles, blocks, cleanHoles ],
         repetitions: 1
     }
 
     timeline.push( exposure );
     
-              
        
     /* define debrief */
     var debrief_block = {
       type: "html-keyboard-response",
       stimulus: function() {
-
+            
         // select the data with tag "test", the data with tag "fixation" are not selected.
-        var trials = jsPsych.data.get().filter({test_part: PARAMS.setup.tag});
+        var trials = jsPsych.data.get().filter({test_part: PARAMS.setup.trailTag});
         var count = Math.round(trials.count());
         var rt = Math.round(trials.select('rt').mean());
 
@@ -150,15 +158,52 @@
 
     //================EXPOSURE END====================== 
        
-       
-    // defining two different response scales that can be used.
-    var scale_1 = ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"];
+    
+    // replay the testSeqs[0]
+    for (var t = 0; t < testSeqs.length; t++) {
+        var test_block_var = [];
+        for (var i = 0; i < testSeqs[t].length; i ++) {
+            var idx = testSeqs[t][i];
+            var dict = {};
+            dict['idx'] = idx;
+            dict['data'] = {};
+            dict['data']['test_part'] = testTag;
+            test_block_var.push(dict);
+        }
 
-    var likert_page = {
-        type: 'survey-likert',
-        questions: [{prompt: "I've seen the sequence [0,1]", labels: scale_1}],
-    };
-    timeline.push( likert_page );
+        var test_trail = {
+            type: "show",
+            idx:  jsPsych.timelineVariable('idx'),
+            data:  jsPsych.timelineVariable('data')
+        };  
+
+        var test_block = {
+            timeline: [test_trail, gap],
+            repetitions: 1,
+            timeline_variables: test_block_var
+        };
+
+        var test_replay = {
+            timeline: [ generateHoles, test_block, cleanHoles ],
+            repetitions: 1
+        }
+
+        timeline.push( test_replay );
+
+        // defining two different response scales that can be used.
+        var scale = ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"];
+
+        var likert_page = {
+            type: 'survey-likert',
+            questions: [{prompt: "I've seen the sequence just shown", labels: scale}],
+        };
+
+
+        timeline.push( likert_page );
+
+    }
+
+     
        
     /* start the experiment */
     jsPsych.init({

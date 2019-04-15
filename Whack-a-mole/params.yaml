@@ -1,21 +1,24 @@
 
 # ---------------- SETUP PARAMETER -----------------#
 setup:
-    popSequence: [0,1] 
+    wholeSeq: [0,1,1,0] 
     # The 1st item is 0, it means the 1st mole will pop up from the 1st hole.
+    testSeqs:
+        [[0,1],[1,0]]
     positions: [ 20,500,  20,1000 ] 
-    # Each pair represents the position of a hole. It consists of the distance to left and top boundary.
-    maxRepeat : 2  # The max number of repeat sequence(the number of blocks)
-    restTime: 500  # Break time between each block in miliseconds.
-    tag: 'test'    # Add tag to filter the crucial data.
+    # Each pair represents the position of a hole. It consists of the distance to top and left boundary.
+    blockNum : 2  # The max number of repeat sequence(the number of blocks)
+    popGap: 500  # Time between each mole-movement in miliseconds.
+    restTime: 1000 # rest time between each block.
+    trailTag: 'trail'    # Add tag to filter the crucial data.
+    testTag: 'test' 
     basicHTML: >
         <audio src="sounds/bonk.WAV"></audio>
-
 
 # -------------  MESSAGE ---------------#
 message:
      beginMessage: "Welcome to Whack-a-mole. Press any key to begin!"
-     endMessage: "Thank you!"
+     endMessage: "You did a great job! Take a Rest!"
      
 
 
