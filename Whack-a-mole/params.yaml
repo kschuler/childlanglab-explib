@@ -1,7 +1,7 @@
 
 # ---------------- SETUP PARAMETER -----------------#
 setup:
-    wholeSeq: [0,1,1,0] 
+    wholeSeq: [0,1,1,1,0] 
     # The 1st item is 0, it means the 1st mole will pop up from the 1st hole.
     testSeqs:
         [[0,1],[1,0]]
