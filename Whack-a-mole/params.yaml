@@ -5,7 +5,7 @@ setup:
     # The 1st item is 0, it means the 1st mole will pop up from the 1st hole.
     testSeqs:
         [[0,1],[1,0]]
-    positions: [ 30,300,  30,600 ] 
+    positions: [ 30,400,  30,900 ] 
     # Each pair represents the position of a hole. It consists of the distance to top and left boundary.
     blockNum : 2  # The max number of repeat sequence(the number of blocks)
     popGap: 500  # Time between each mole-movement in miliseconds.
