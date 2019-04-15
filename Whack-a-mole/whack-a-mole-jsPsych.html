@@ -150,8 +150,9 @@
         var rt = Math.round(trials.select('rt').mean());
 
         return "<p>Great! You've whacked "+count+" moles.</p>"+
-        "<p>Your average response time was "+rt+"ms.</p>"+
-        "<p>Press any key to complete the experiment. Thank you!</p>";
+        "<p>Your average response time was "+rt+"ms.Thank you!</p>"+
+        "<p> Now, we are heading to a survey!Press any key to continue. </p>";
+          
       }
     };
     timeline.push(debrief_block);
@@ -195,15 +196,11 @@
 
         var likert_page = {
             type: 'survey-likert',
-            questions: [{prompt: "I've seen the sequence just shown", labels: scale}],
+            questions: [{prompt: "I've seen the sequence just shown.", labels: scale}],
         };
-
-
         timeline.push( likert_page );
 
     }
-
-     
        
     /* start the experiment */
     jsPsych.init({
