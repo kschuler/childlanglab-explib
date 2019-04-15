@@ -3,29 +3,21 @@
 setup:
     # The 1st item is 0, it means the 1st mole will pop up from the 1st hole.
     # and second mole will pop up from the second hole.
-    wholeSeq: [0,1,1,1,0] 
-    
+   wholeSeq: [0,1,1,1,0]
    # The sequence pattern that you want to replay.
    testSeqs: [[0,1],[1,0]]
-   
    # Each pair represents the position of a hole. It consists of the distance to top and left boundary.
    positions: [ 30,400,  30,900 ] 
-
     # The max number of blocks(repeat sequence)
    blockNum: 2 
-
     # Time between each mole-movement in miliseconds.
    popGap: 500
-
     # rest time between each block.
    restTime: 1000
-
     # Tag to filter the data in exposure part.
    trailTag: 'trail'
-
     # Tag to filter the data in test part.
    testTag: 'test'
-
     # Add some other HTML elements.
    basicHTML: >
        <audio src="sounds/bonk.WAV"></audio>
