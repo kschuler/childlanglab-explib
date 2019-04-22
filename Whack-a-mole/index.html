@@ -9,9 +9,11 @@
      <!-- add jspsych plugins-->
      <script src="../js/jsChildLangLab/jspsych-plugin-wam.js"></script>
      <script src="../js/jsChildLangLab/jspsych-plugin-webcam.js"></script>
+     <script src="../js/jsChildLangLab/jspsych-plugin-audio.js"></script>
      <script src="../js/jspsych-6.0.5/plugins/jspsych-survey-likert.js"></script> 
      <script src="../js/jspsych-6.0.5/plugins/jspsych-html-keyboard-response.js"></script>
      <script src="../js/jspsych-6.0.5/plugins/jspsych-call-function.js"></script>
+      
      <!-- add jQuery -->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
      <!-- libraries required for YAML parsing -->
@@ -40,6 +42,8 @@
     let trailTag = PARAMS.setup.trailTag;
     let testTag = PARAMS.setup.testTag;
     let basic = PARAMS.setup.basicHTML;
+    let audioHTML = PARAMS.audioHTML;
+    let videoHTML = PARAMS.videoHTML;
     let beginMessage = PARAMS.message.beginMessage;
     let endMessage = PARAMS.message.endMessage;
     let popGap = PARAMS.setup.popGap;
@@ -74,13 +78,27 @@
     }
     
     var timeline = [];
+       
+       
+       
     //================WEBCAM BEGIN================ 
     var webcam = {
       type: "webcam",
-      stimulus: '<p>Instruction goes here...</p>',
+      stimulus: '<p>Download video: click the right-bottom button.</p>',
+      video_html: videoHTML,
       trial_duration: 500000
     };
+       
     timeline.push(webcam); 
+     
+    var audio = {
+        type: "audio",
+        stimulus: '<p>Clicked continue to start the game...</p>',
+        audio_html: audioHTML,
+        trial_duration: 500000        
+    }
+    timeline.push(audio);
+       
     
     //================EXPOSURE BEGIN================    
     
@@ -89,6 +107,7 @@
       type: "html-keyboard-response",
       stimulus: beginMessage
     };
+       
     timeline.push(welcome);
 
     /*define a single trail*/  
@@ -216,6 +235,7 @@
     /* start the experiment */
     jsPsych.init({
       timeline: timeline,
+      
       on_finish: function() {
         jsPsych.data.displayData();
       }

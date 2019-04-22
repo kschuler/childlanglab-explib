@@ -10,7 +10,39 @@
 /* Container holding jsPsych content */
 
 
+.mybtn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 2px;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Open Sans', 'Arial', sans-serif;
+  cursor: pointer;
+  line-height: 1.4;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+    
+}
 
+.mybtn:hover {
+  background-color: #ddd;
+  border-color: #aaa;
+}
+#jspsych-loading-progress-bar-container{
+    opacity: 0;
+}
+
+hr.empty {
+  border-top: 20px solid red;
+  opacity:0;
+}
 html {
     color: orange;
 }
@@ -60,6 +92,8 @@ html {
   font-family: 'Open Sans', 'Arial', sans-serif;
   font-size: 14px;
 }
+
+
 
 /* borrowing Bootstrap style for btn elements, but combining styles a bit */
 .jspsych-btn {
