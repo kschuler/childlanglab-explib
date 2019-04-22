@@ -16,6 +16,7 @@ jsPsych.plugins["show"] = (function() {
   }
   
   plugin.trial = function(display_element, trial) {
+
     const holes = document.querySelectorAll('.hole');
     const moles = document.querySelectorAll('.mole');
     const bonkSound = document.querySelector('audio');
