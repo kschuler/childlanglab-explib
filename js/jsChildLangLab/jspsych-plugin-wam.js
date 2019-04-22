@@ -32,10 +32,6 @@ jsPsych.plugins["show"] = (function() {
       hole = holes[i];
       hole.classList.remove('up');
       bonkSound.play();
-      //scoreBoard.classList.remove('add');
-      //scoreBoard.classList.add('add');
-      //console.log("score = "+score);
-      //score++;
       afterResponse();    
     }
       

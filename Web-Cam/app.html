@@ -10,12 +10,7 @@
         <!-- Style of VideoJS -->
         <link href="video-js/videojs.record.css" rel="stylesheet">
 
-        <style>
-        /* change player background color */
-        #myVideo {
-            background-color: #9ab87a;
-        }
-        </style>
+        
     </head>
     <body>
         <!-- Create the preview video element -->
@@ -30,6 +25,8 @@
         
         <!-- Load VideoJS Record Extension -->
         <script src="video-js/videojs.record.js"></script>
+        
+        
         <script>
         var videoMaxLengthInSeconds = 120;
 
@@ -74,6 +71,7 @@
 
             
         // user completed recording and stream is available
+        // user completed recording and stream is available
         player.on('finishRecord', function() {
             // the blob object contains the recorded data that
             // can be downloaded by the user, stored on server etc.
@@ -86,7 +84,7 @@
 
             // Execute the ajax request, in this case we have a very simple PHP script
             // that accepts and save the uploaded "video" file
-            xhr('./upload-video.php', formData, function (fName) {
+            xhr('upload-video.php', formData, function (fName) {
                 console.log("Video succesfully uploaded !");
             });
 
