@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <script src="jsPsych-6.0.1/jspsych.js"></script>
+  <script src="jsPsych-6.0.1/plugins/jspsych-instructions.js"></script>
+  <script src="jsPsych-6.0.1/plugins/jspsych-html-button-response.js"></script>
+  <script src="jsPsych-6.0.1/plugins/jspsych-audio-button-response.js"></script>
+  <script src="jsPsych-6.0.1/plugins/jspsych-audio-keyboard-response.js"></script>
+  <script src="jsPsych-6.0.1/plugins/jspsych-html-keyboard-response.js"></script>
+  <script src="jsPsych-6.0.1/plugins/jspsych-image-keyboard-response.js"></script>
+  <script src="jsPsych-6.0.1/plugins/jspsych-survey-text.js"></script>
+  <script src="Recorderjs-Recorder.js-For-Mp3/recorder.js"></script>
+  <script src="Recorderjs-Recorder.js-For-Mp3/js/recorderWorker.js"></script>
+  <script src="uploadworker.js"></script>
+  <link rel="stylesheet" href="jsPsych-6.0.1/css/jspsych.css"></link>
+  </head>
+
+<body>
+  <div id="jspsych-target"></div>
+</body>
+
+
+
+<script>
+
+var subjectID = jsPsych.randomization.randomID(10);
+URL = window.URL || window.webkitURL;
+var gumStream; //stream from getUserMedia()
+var rec; //Recorder.js object
+var input; //MediaStreamAudioSourceNode we'll be recording
+ 
+// shim for AudioContext when it's not avb. 
+var AudioContext = window.AudioContext || window.webkitAudioContext;
+var audioContext = new AudioContext; //new audio context to help us record
+var filename; // Global variable needed to pass the filename of the item we are recording to the worker and php
+var item__number; //Global variable needed to pass the item number of the item we are recording to the worker and php
+
+function startUserMedia() {
+// This function sets up getUserMedia and creates a recorder worker that will do the recording
+	var constraints = { audio: true, video:false }
+	navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+		console.log("getUserMedia() success, stream created, initializing Recorder.js");
+		gumStream = stream;
+		input = audioContext.createMediaStreamSource(stream);
+		rec = new Recorder(input, {numChannels:1});
+	}).catch(function(err) {
+		console.log("Error");
+	});
+}
+	
+function startRecording() {
+	//Start recording
+    rec.record();
+    console.log("Recording...");
+}
+
+function stopRecording() {
+        // Stop recording, pass the blob in the recording buffer to the function that exportsWAV, and clear the recording buffer
+        rec.stop();
+        console.log('...Stopped recording.');
+
+
+        // Use the Recorder Library to export the recorder Audio as a .wav file
+        // The callback provided in the stop recording method receives the blob
+        
+        rec.exportWAV(uploadRecordedAudio);
+		rec.clear();
+}
+
+function uploadRecordedAudio(blob) {
+ // This function starts the upload worker that will write the file to the server.  An upload worker was chosen because I found that multiple uploads sometimes stacked up so much that the xhr calls were cancelled by the server
+	var filename = subjectID + item__number; //filename to send to server without extension
+	var worker = new Worker('uploadworker.js');
+    worker.postMessage(["audio_data", blob, filename]);
+
+}
+
+
+var initialize_audio_instructions = {
+	type: "html-button-response",
+	stimulus: "The experiment will now attempt to start your microphone.  Please make sure your microphone and headphones are plugged in, and then click Proceed.  If you receive a prompt from your browser, please click Allow.",
+	choices: ["Proceed"],
+	response_ends_trial: true
+}
+
+var initialize_audio = {
+    type: "html-button-response",
+    stimulus: "",
+	trial_duration: 500,
+	response_ends_trial: true,
+    on_start: function(){
+        startUserMedia();
+		console.log("initialize_audio complete");
+    }
+};
+
+var proceed_after_audio_initialization = {
+// I found that if I proceeded to recording immediately after trying to initilize audio, sometimes the audio would not be fully initialized before the script proceeded to the first item.
+// Therefore I included this item before the actual recording items.  This could be used to give instructions for the recording task, etc.
+	type: "html-button-response",
+	stimulus: "Press the button to Proceed.",
+	choices: ["Proceed"],
+	response_ends_trial: true
+}
+
+var production_items = {
+	// This jsPsych item shows an X for 1 second, then shows a picture for 3 seconds, during which time audio is recorded. The idea is that the person will speak during the 3-second time.
+	timeline: [
+	{
+		type: "html-keyboard-response",
+		stimulus: "x",
+		trial_duration: 1000,
+		response_ends_trial: false
+	},
+	{
+		on_start: function() {
+			startRecording(); 
+			console.log("Recording started");
+		},
+		type: "image-keyboard-response",
+	    stimulus: jsPsych.timelineVariable("imagename"),
+	    trial_duration: 3000,
+	    response_ends_trial: false,
+		on_finish: function() {
+			item__number = jsPsych.timelineVariable("itemnumber", true);
+			filename = subjectID + item__number;
+			stopRecording();
+			console.log("production_test_item " + item__number + " completed");
+		}
+	}
+	],
+	randomize_order: true,
+	timeline_variables: [
+{imagename: "ägg.jpg", itemdata: {subject_ID_number: subjectID, item_number: "401"}, itemnumber: "401"},
+{imagename: "rätt.jpg", itemdata: {subject_ID_number: subjectID, item_number: "402"}, itemnumber: "402"},
+{imagename: "kväll.jpg", itemdata: {subject_ID_number: subjectID, item_number: "403"}, itemnumber: "403"},
+{imagename: "håll.jpg", itemdata: {subject_ID_number: subjectID, item_number: "404"}, itemnumber: "404"},
+{imagename: "sång.jpg", itemdata: {subject_ID_number: subjectID, item_number: "405"}, itemnumber: "405"},
+{imagename: "påsk.jpg", itemdata: {subject_ID_number: subjectID, item_number: "406"}, itemnumber: "406"},
+{imagename: "röst.jpg", itemdata: {subject_ID_number: subjectID, item_number: "407"}, itemnumber: "407"},
+{imagename: "öst.jpg", itemdata: {subject_ID_number: subjectID, item_number: "408"}, itemnumber: "408"},
+{imagename: "ört.jpg", itemdata: {subject_ID_number: subjectID, item_number: "409"}, itemnumber: "409"},
+{imagename: "län.jpg", itemdata: {subject_ID_number: subjectID, item_number: "410"}, itemnumber: "410"},
+{imagename: "träd.jpg", itemdata: {subject_ID_number: subjectID, item_number: "411"}, itemnumber: "411"},
+{imagename: "kräm.jpg", itemdata: {subject_ID_number: subjectID, item_number: "412"}, itemnumber: "412"},
+{imagename: "år.jpg", itemdata: {subject_ID_number: subjectID, item_number: "413"}, itemnumber: "413"},
+{imagename: "mål.jpg", itemdata: {subject_ID_number: subjectID, item_number: "414"}, itemnumber: "414"},
+{imagename: "råd.jpg", itemdata: {subject_ID_number: subjectID, item_number: "415"}, itemnumber: "415"},
+{imagename: "stöd.jpg", itemdata: {subject_ID_number: subjectID, item_number: "416"}, itemnumber: "416"},
+{imagename: "hörn.jpg", itemdata: {subject_ID_number: subjectID, item_number: "417"}, itemnumber: "417"},
+{imagename: "öl.jpg", itemdata: {subject_ID_number: subjectID, item_number: "418"}, itemnumber: "418"},
+{imagename: "ägg.jpg", itemdata: {subject_ID_number: subjectID, item_number: "419"}, itemnumber: "419"},
+{imagename: "rätt.jpg", itemdata: {subject_ID_number: subjectID, item_number: "420"}, itemnumber: "420"},
+{imagename: "kväll.jpg", itemdata: {subject_ID_number: subjectID, item_number: "421"}, itemnumber: "421"},
+{imagename: "håll.jpg", itemdata: {subject_ID_number: subjectID, item_number: "422"}, itemnumber: "422"},
+{imagename: "sång.jpg", itemdata: {subject_ID_number: subjectID, item_number: "423"}, itemnumber: "423"},
+{imagename: "påsk.jpg", itemdata: {subject_ID_number: subjectID, item_number: "424"}, itemnumber: "424"},
+{imagename: "röst.jpg", itemdata: {subject_ID_number: subjectID, item_number: "425"}, itemnumber: "425"},
+{imagename: "öst.jpg", itemdata: {subject_ID_number: subjectID, item_number: "426"}, itemnumber: "426"},
+{imagename: "ört.jpg", itemdata: {subject_ID_number: subjectID, item_number: "427"}, itemnumber: "427"},
+{imagename: "län.jpg", itemdata: {subject_ID_number: subjectID, item_number: "428"}, itemnumber: "428"},
+{imagename: "träd.jpg", itemdata: {subject_ID_number: subjectID, item_number: "429"}, itemnumber: "429"},
+{imagename: "kräm.jpg", itemdata: {subject_ID_number: subjectID, item_number: "430"}, itemnumber: "430"},
+{imagename: "år.jpg", itemdata: {subject_ID_number: subjectID, item_number: "431"}, itemnumber: "431"},
+{imagename: "mål.jpg", itemdata: {subject_ID_number: subjectID, item_number: "432"}, itemnumber: "432"},
+{imagename: "råd.jpg", itemdata: {subject_ID_number: subjectID, item_number: "433"}, itemnumber: "433"},
+{imagename: "stöd.jpg", itemdata: {subject_ID_number: subjectID, item_number: "434"}, itemnumber: "434"},
+{imagename: "hörn.jpg", itemdata: {subject_ID_number: subjectID, item_number: "435"}, itemnumber: "435"},
+{imagename: "öl.jpg", itemdata: {subject_ID_number: subjectID, item_number: "436"}, itemnumber: "436"}
+	]
+};
+
+var deinitialize_audio = {
+// Stops getUserMedia so that the page doesn't continue to access the microphone. You might also include terminate instructions for workers here.
+	on_start: function() {
+		audioContext.close();
+		gumStream.getAudioTracks()[0].stop();
+	},
+	type: "html-keyboard-response",
+	stimulus: "",
+	trial_duration: 50,
+	response_ends_trial: false
+};
+
+var start_the_experiment = {
+	timeline: [initialize_audio_instructions, initialize_audio, proceed_after_audio_initialization, production_items, deinitialize_audio]
+};
+
+jsPsych.init({
+	/*display_element: $('#jspsych-target'),*/
+    timeline: [start_the_experiment],
+	exclusions: {audio: true},
+	show_progress_bar: false,
+	auto_update_progress_bar: false
+});
+
+</script>
+</html>
