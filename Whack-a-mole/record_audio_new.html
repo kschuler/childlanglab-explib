@@ -1,0 +1,498 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <script src="jsPsych-6.0.1/jspsych.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <!--<script src="jsPsych-6.0.1/plugins/jspsych-text.js"></script>-->
+  <script src="jsPsych-6.0.1/plugins/jspsych-instructions.js"></script>
+  <script src="jsPsych-6.0.1/plugins/jspsych-html-button-response.js"></script>
+  <script src="jsPsych-6.0.1/plugins/jspsych-audio-button-response.js"></script>
+  <script src="jsPsych-6.0.1/plugins/jspsych-audio-keyboard-response.js"></script>
+  <script src="jsPsych-6.0.1/plugins/jspsych-html-keyboard-response.js"></script>
+  <script src="jsPsych-6.0.1/plugins/jspsych-image-keyboard-response.js"></script>
+  <script src="jsPsych-6.0.1/plugins/jspsych-survey-text.js"></script>
+  <script src="Recorderjs-Recorder.js-For-Mp3/recorder.js"></script>
+  <script src="Recorderjs-Recorder.js-For-Mp3/js/recorderWorker.js"></script>
+  <script src="uploadworker.js"></script>
+  <link rel="stylesheet" href="jsPsych-6.0.1/css/jspsych.css"></link>
+  </head>
+
+<body>
+  <div id="jspsych-target"></div>
+</body>
+
+
+
+<script>
+
+
+/*
+Experiment outline for orthography experiment
+Get subject"s ID number
+Consent form
+Fullscreen button
+Learning phase Instructions
+Learning phase
+Test on learned vocabulary
+If not learned, loop back to learning phase
+If not learned after two learning phases, end the experiment
+(report on successful completion of the learning phase or not)
+Perceptual test instructions
+Perceptual test
+(save the perceptual data)
+Production test instructions
+Production test
+(save the production data)
+Survey
+You have completed the experiment
+
+Code outline for orthography experiment
+
+*/
+var proceed_with_consent = false;
+var subjectID = jsPsych.randomization.randomID(10);/*"test"*/;
+var progressbarvalue = 0;
+var amounttoincrement = 1/190;
+var number_of_attempts_at_learning_phase = 0;
+URL = window.URL || window.webkitURL;
+ 
+var gumStream; //stream from getUserMedia()
+var rec; //Recorder.js object
+var input; //MediaStreamAudioSourceNode we'll be recording
+ 
+// shim for AudioContext when it's not avb. 
+var AudioContext = window.AudioContext || window.webkitAudioContext;
+var audioContext; //new audio context to help us record
+var filename;
+var item__number;
+/*var xhr;*/
+
+var consent_instructions = {
+    type: "instructions",
+    pages: ["INTRODUCTION<br/>You are invited to take part in a research study that helps to understand how people learn the sounds of new languages. These instructions explain some information about the study to help you make the decision about whether you want to participate.  You can use the buttons below to go forward and back in this information.",
+        "WHAT IS INVOLVED IN THE STUDY <br/>If you decide to participate you will be asked to participate in a computer session and then complete a questionnaire. Together, these activities will take approximately 20 to 30 minutes. <br/>During the computer session, you may be asked to do the following activities, sometimes simultaneously,<br/><ul><li>Look at images on the computer screen</li><li>Look at words on the computer screen</li><li>Listen to recordings of words or sentences</li><li>Respond to what you see or hear by pressing keys on the computer</li><li>Respond to what you see or hear by saying words</li></ul>You will get instructions before you are asked to do any tasks.  Information about the keys you pressed and your vocal responses will be recorded.  The audio recordings may be used in future research, but your name will not be given when the recordings are used.",
+        "RISKS<br/>The risks of participating in this study are similar to the risks you encounter when completing schoolwork or using a computer at home.  You will be asked to provide some personal information about your background on the questionnaire.  You may feel bored or frustrated while completing the study.",
+        "BENEFITS TO TAKING PART IN THE STUDY<br/>You probably will not benefit personally from participating in the study, but your participation will help us better understand how people learn sounds in new languages.  This can ultimately help us to lead to better research and better language teaching in the future.",
+        "CONFIDENTIALITY<br/>You will be assigned a code number in association with this study so that your identity will be protected while data is collected and published.  Any information that connects your name or other personally identifying information with your code number will be kept in a locked office or on a password-protected server.  Your personally identifying information will only be available to the researcher and her team.",
+        /*"INCENTIVES<br/>INSERT INFO ABOUT INCENTIVES HERE",*/
+        "YOUR RIGHTS AS A RESEARCH PARTICIPANT<br/>Your participation in this study is voluntary.  You have the right not to participate or to stop your participation at any time.  Doing this will not harm your relationship with the researcher or her team.",
+        "CONTACT FOR QUESTIONS OR PROBLEMS<br/>Contact Mara Haslam, Ph.D. at mara.haslam@isd.su.se if you have any questions or concerns about the study."],
+    show_clickable_nav: true
+};
+
+var ask_for_consent = {
+    type: "html-button-response",
+	is_html: true,
+    stimulus: "Do you wish to proceed with the experiment&#63;  Pressing the NO button will end the experiment.  Pressing the YES button will indicate that you consent to the conditions and wish to proceed.  If you have any questions before you proceed, please contact Dr. Mara Haslam at mara.haslam@isd.su.se.",
+    choices:["NO","YES"],
+    on_finish: function(data){
+        if (data.button_pressed == "1") {proceed_with_consent = true};
+		console.log("ask_for_consent finished");
+		progressbarvalue = progressbarvalue + amounttoincrement;
+		jsPsych.setProgressBar(progressbarvalue);
+    }
+};
+
+function startUserMedia() {
+	var constraints = { audio: true, video:false };
+	var audioContext = new AudioContext; 
+	navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+		console.log("getUserMedia() success, stream created, initializing Recorder.js");
+		gumStream = stream;
+		input = audioContext.createMediaStreamSource(stream);
+		rec = new Recorder(input, {numChannels:1});
+	}).catch(function(err) {
+		console.log("Error");
+	});
+	/*xhr = new XMLHttpRequest();*/
+}
+	
+function startRecording() {
+    rec.record();
+    console.log("Recording...");
+}
+
+function stopRecording() {
+        // Stop the recorder instance
+        rec.stop();
+        console.log('...Stopped recording.');
+
+        // Stop the getUserMedia Audio Stream !
+       // audio_stream.getAudioTracks()[0].stop();
+
+        // Use the Recorder Library to export the recorder Audio as a .wav file
+        // The callback providen in the stop recording method receives the blob
+        
+        rec.exportWAV(createDownloadLink);
+		rec.clear();
+}
+
+function createDownloadLink(blob) {
+ 
+	var filename = subjectID + item__number; //filename to send to server without extension
+	var worker = new Worker('uploadworker.js');
+	/*var fd = new FormData;
+	fd.append("audio_data", blob, filename);*/
+    worker.postMessage(["audio_data", blob, filename]);
+	//upload link
+	/*
+		xhr.onload=function(e) {
+			if(this.readyState === 4) {
+			console.log("Server returned: ",e.target.responseText);
+		}
+	};*/
+	
+	/*var fd=new FormData();
+	fd.append("audio_data",blob, filename);*/
+	/*xhr.open("POST","upload_wav.php",true);
+	xhr.send(fd);*/
+	
+}
+
+
+var initialize_audio_instructions = {
+	type: "html-button-response",
+	stimulus: "The experiment will now attempt to start your microphone.  Please make sure your microphone and headphones are plugged in, and then click Proceed.  If you receive a prompt from your browser, please click Allow.",
+	choices: ["Proceed"],
+	response_ends_trial: true
+}
+
+var initialize_audio = {
+// Prompt them to choose allow and then initialize stream.
+    type: "html-button-response",
+    stimulus: "",
+	trial_duration: 500,
+	response_ends_trial: true,
+    on_start: function(){
+        startUserMedia();
+		console.log("initialize_audio complete");
+    }
+};
+
+var proceed_after_audio_initialization =
+// I found that 
+	type: "html-button-response",
+	stimulus: "Press the button to Proceed.",
+	choices: ["Proceed"],
+	response_ends_trial: true
+}
+
+var learning_phase_instructions = {
+	type: "instructions",
+    pages: [
+        "In this part of the experiment, you will learn some words in Swedish.  For each item, you will see a word and you will see an image that represents the meaning of the word.  You will also hear a recording of a native speaker saying the word.",
+        "Try to learn the words and their meanings.  You will be tested on this later.",
+        "Remember: try to learn the words and their meanings. Press Next when you are ready to begin the task."
+        ],
+    show_clickable_nav: true,
+	on_finish: function () {console.log("learning_phase_instructions complete");}
+};
+
+var learning_phase_items = {
+	timeline: [
+	    {
+		    type: "html-keyboard-response",
+	        stimulus: " ",
+	        trial_duration: 500,
+	        response_ends_trial: false
+	    },
+	    {
+		    type: "audio-keyboard-response",
+		    stimulus: jsPsych.timelineVariable("wavfile"),
+		    prompt: jsPsych.timelineVariable("prompttext"),
+		    trial_duration: "3000",
+		    response_ends_trial: false,
+		    data: jsPsych.timelineVariable("itemdata"),
+			on_finish: function () {console.log("trials_stimulus_item " + jsPsych.timelineVariable("itemnumber", true) + " complete");progressbarvalue = progressbarvalue + amounttoincrement; jsPsych.setProgressBar(progressbarvalue);}
+	    }	  
+	],
+	timeline_variables: [
+{wavfile:"Orthography_Stimulus_recording102111111.wav", prompttext: "<img src='ägg.jpg'></br>ägg", itemnumber: "1", itemdata: { subject_ID_number: subjectID, item_number: "1"}},
+{wavfile:"Orthography_Stimulus_recording102111211.wav", prompttext: "<img src='rätt.jpg'></br>rätt", itemnumber: "2", itemdata: { subject_ID_number: subjectID, item_number: "2"}},
+{wavfile:"Orthography_Stimulus_recording102111311.wav", prompttext: "<img src='kväll.jpg'></br>kväll", itemnumber: "3", itemdata: { subject_ID_number: subjectID, item_number: "3"}},
+{wavfile:"Orthography_Stimulus_recording102121111.wav", prompttext: "<img src='håll.jpg'></br>håll", itemnumber: "4", itemdata: { subject_ID_number: subjectID, item_number: "4"}},
+{wavfile:"Orthography_Stimulus_recording102121211.wav", prompttext: "<img src='sång.jpg'></br>sång", itemnumber: "5", itemdata: { subject_ID_number: subjectID, item_number: "5"}},
+{wavfile:"Orthography_Stimulus_recording102121311.wav", prompttext: "<img src='påsk.jpg'></br>påsk", itemnumber: "6", itemdata: { subject_ID_number: subjectID, item_number: "6"}},
+{wavfile:"Orthography_Stimulus_recording102131111.wav", prompttext: "<img src='röst.jpg'></br>röst", itemnumber: "7", itemdata: { subject_ID_number: subjectID, item_number: "7"}},
+{wavfile:"Orthography_Stimulus_recording102131211.wav", prompttext: "<img src='öst.jpg'></br>öst", itemnumber: "8", itemdata: { subject_ID_number: subjectID, item_number: "8"}},
+{wavfile:"Orthography_Stimulus_recording102131311.wav", prompttext: "<img src='ört.jpg'></br>ört", itemnumber: "9", itemdata: { subject_ID_number: subjectID, item_number: "9"}},
+{wavfile:"Orthography_Stimulus_recording102211111.wav", prompttext: "<img src='län.jpg'></br>län", itemnumber: "10", itemdata: { subject_ID_number: subjectID, item_number: "10"}},
+{wavfile:"Orthography_Stimulus_recording102211211.wav", prompttext: "<img src='träd.jpg'></br>träd", itemnumber: "11", itemdata: { subject_ID_number: subjectID, item_number: "11"}},
+{wavfile:"Orthography_Stimulus_recording102211311.wav", prompttext: "<img src='kräm.jpg'></br>kräm", itemnumber: "12", itemdata: { subject_ID_number: subjectID, item_number: "12"}},
+{wavfile:"Orthography_Stimulus_recording102221111.wav", prompttext: "<img src='år.jpg'></br>år", itemnumber: "13", itemdata: { subject_ID_number: subjectID, item_number: "13"}},
+{wavfile:"Orthography_Stimulus_recording102221211.wav", prompttext: "<img src='mål.jpg'></br>mål", itemnumber: "14", itemdata: { subject_ID_number: subjectID, item_number: "14"}},
+{wavfile:"Orthography_Stimulus_recording102221311.wav", prompttext: "<img src='råd.jpg'></br>råd", itemnumber: "15", itemdata: { subject_ID_number: subjectID, item_number: "15"}},
+{wavfile:"Orthography_Stimulus_recording102231111.wav", prompttext: "<img src='stöd.jpg'></br>stöd", itemnumber: "16", itemdata: { subject_ID_number: subjectID, item_number: "16"}},
+{wavfile:"Orthography_Stimulus_recording102231211.wav", prompttext: "<img src='hörn.jpg'></br>hörn", itemnumber: "17", itemdata: { subject_ID_number: subjectID, item_number: "17"}},
+{wavfile:"Orthography_Stimulus_recording102231311.wav", prompttext: "<img src='öl.jpg'></br>öl", itemnumber: "18", itemdata: { subject_ID_number: subjectID, item_number: "18"}},
+{wavfile:"Orthography_Stimulus_recording103111111.wav", prompttext: "<img src='ägg.jpg'></br>ägg", itemnumber: "19", itemdata: { subject_ID_number: subjectID, item_number: "19"}},
+{wavfile:"Orthography_Stimulus_recording103111211.wav", prompttext: "<img src='rätt.jpg'></br>rätt", itemnumber: "20", itemdata: { subject_ID_number: subjectID, item_number: "20"}},
+{wavfile:"Orthography_Stimulus_recording103111311.wav", prompttext: "<img src='kväll.jpg'></br>kväll", itemnumber: "21", itemdata: { subject_ID_number: subjectID, item_number: "21"}},
+{wavfile:"Orthography_Stimulus_recording103121111.wav", prompttext: "<img src='håll.jpg'></br>håll", itemnumber: "22", itemdata: { subject_ID_number: subjectID, item_number: "22"}},
+{wavfile:"Orthography_Stimulus_recording103121211.wav", prompttext: "<img src='sång.jpg'></br>sång", itemnumber: "23", itemdata: { subject_ID_number: subjectID, item_number: "23"}},
+{wavfile:"Orthography_Stimulus_recording103121311.wav", prompttext: "<img src='påsk.jpg'></br>påsk", itemnumber: "24", itemdata: { subject_ID_number: subjectID, item_number: "24"}},
+{wavfile:"Orthography_Stimulus_recording103131111.wav", prompttext: "<img src='röst.jpg'></br>röst", itemnumber: "25", itemdata: { subject_ID_number: subjectID, item_number: "25"}},
+{wavfile:"Orthography_Stimulus_recording103131211.wav", prompttext: "<img src='öst.jpg'></br>öst", itemnumber: "26", itemdata: { subject_ID_number: subjectID, item_number: "26"}},
+{wavfile:"Orthography_Stimulus_recording103131311.wav", prompttext: "<img src='ört.jpg'></br>ört", itemnumber: "27", itemdata: { subject_ID_number: subjectID, item_number: "27"}},
+{wavfile:"Orthography_Stimulus_recording103211111.wav", prompttext: "<img src='län.jpg'></br>län", itemnumber: "28", itemdata: { subject_ID_number: subjectID, item_number: "28"}},
+{wavfile:"Orthography_Stimulus_recording103211211.wav", prompttext: "<img src='träd.jpg'></br>träd", itemnumber: "29", itemdata: { subject_ID_number: subjectID, item_number: "29"}},
+{wavfile:"Orthography_Stimulus_recording103211311.wav", prompttext: "<img src='kräm.jpg'></br>kräm", itemnumber: "30", itemdata: { subject_ID_number: subjectID, item_number: "30"}},
+{wavfile:"Orthography_Stimulus_recording103221111.wav", prompttext: "<img src='år.jpg'></br>år", itemnumber: "31", itemdata: { subject_ID_number: subjectID, item_number: "31"}},
+{wavfile:"Orthography_Stimulus_recording103221211.wav", prompttext: "<img src='mål.jpg'></br>mål", itemnumber: "32", itemdata: { subject_ID_number: subjectID, item_number: "32"}},
+{wavfile:"Orthography_Stimulus_recording103221311.wav", prompttext: "<img src='råd.jpg'></br>råd", itemnumber: "33", itemdata: { subject_ID_number: subjectID, item_number: "33"}},
+{wavfile:"Orthography_Stimulus_recording103231111.wav", prompttext: "<img src='stöd.jpg'></br>stöd", itemnumber: "34", itemdata: { subject_ID_number: subjectID, item_number: "34"}},
+{wavfile:"Orthography_Stimulus_recording103231211.wav", prompttext: "<img src='hörn.jpg'></br>hörn", itemnumber: "35", itemdata: { subject_ID_number: subjectID, item_number: "35"}},
+{wavfile:"Orthography_Stimulus_recording103231311.wav", prompttext: "<img src='öl.jpg'></br>öl", itemnumber: "36", itemdata: { subject_ID_number: subjectID, item_number: "36"}},
+{wavfile:"Orthography_Stimulus_recording104111111.wav", prompttext: "<img src='ägg.jpg'></br>ägg", itemnumber: "37", itemdata: { subject_ID_number: subjectID, item_number: "37"}},
+{wavfile:"Orthography_Stimulus_recording104111211.wav", prompttext: "<img src='rätt.jpg'></br>rätt", itemnumber: "38", itemdata: { subject_ID_number: subjectID, item_number: "38"}},
+{wavfile:"Orthography_Stimulus_recording104111311.wav", prompttext: "<img src='kväll.jpg'></br>kväll", itemnumber: "39", itemdata: { subject_ID_number: subjectID, item_number: "39"}},
+{wavfile:"Orthography_Stimulus_recording104121111.wav", prompttext: "<img src='håll.jpg'></br>håll", itemnumber: "40", itemdata: { subject_ID_number: subjectID, item_number: "40"}},
+{wavfile:"Orthography_Stimulus_recording104121211.wav", prompttext: "<img src='sång.jpg'></br>sång", itemnumber: "41", itemdata: { subject_ID_number: subjectID, item_number: "41"}},
+{wavfile:"Orthography_Stimulus_recording104121311.wav", prompttext: "<img src='påsk.jpg'></br>påsk", itemnumber: "42", itemdata: { subject_ID_number: subjectID, item_number: "42"}},
+{wavfile:"Orthography_Stimulus_recording104131111.wav", prompttext: "<img src='röst.jpg'></br>röst", itemnumber: "43", itemdata: { subject_ID_number: subjectID, item_number: "43"}},
+{wavfile:"Orthography_Stimulus_recording104131211.wav", prompttext: "<img src='öst.jpg'></br>öst", itemnumber: "44", itemdata: { subject_ID_number: subjectID, item_number: "44"}},
+{wavfile:"Orthography_Stimulus_recording104131311.wav", prompttext: "<img src='ört.jpg'></br>ört", itemnumber: "45", itemdata: { subject_ID_number: subjectID, item_number: "45"}},
+{wavfile:"Orthography_Stimulus_recording104211111.wav", prompttext: "<img src='län.jpg'></br>län", itemnumber: "46", itemdata: { subject_ID_number: subjectID, item_number: "46"}},
+{wavfile:"Orthography_Stimulus_recording104211211.wav", prompttext: "<img src='träd.jpg'></br>träd", itemnumber: "47", itemdata: { subject_ID_number: subjectID, item_number: "47"}},
+{wavfile:"Orthography_Stimulus_recording104211311.wav", prompttext: "<img src='kräm.jpg'></br>kräm", itemnumber: "48", itemdata: { subject_ID_number: subjectID, item_number: "48"}},
+{wavfile:"Orthography_Stimulus_recording104221111.wav", prompttext: "<img src='år.jpg'></br>år", itemnumber: "49", itemdata: { subject_ID_number: subjectID, item_number: "49"}},
+{wavfile:"Orthography_Stimulus_recording104221211.wav", prompttext: "<img src='mål.jpg'></br>mål", itemnumber: "50", itemdata: { subject_ID_number: subjectID, item_number: "50"}},
+{wavfile:"Orthography_Stimulus_recording104221311.wav", prompttext: "<img src='råd.jpg'></br>råd", itemnumber: "51", itemdata: { subject_ID_number: subjectID, item_number: "51"}},
+{wavfile:"Orthography_Stimulus_recording104231111.wav", prompttext: "<img src='stöd.jpg'></br>stöd", itemnumber: "52", itemdata: { subject_ID_number: subjectID, item_number: "52"}},
+{wavfile:"Orthography_Stimulus_recording104231211.wav", prompttext: "<img src='hörn.jpg'></br>hörn", itemnumber: "53", itemdata: { subject_ID_number: subjectID, item_number: "53"}},
+{wavfile:"Orthography_Stimulus_recording104231311.wav", prompttext: "<img src='öl.jpg'></br>öl", itemnumber: "54", itemdata: { subject_ID_number: subjectID, item_number: "54"}},
+{wavfile:"Orthography_Stimulus_recording105111111.wav", prompttext: "<img src='ägg.jpg'></br>ägg", itemnumber: "55", itemdata: { subject_ID_number: subjectID, item_number: "55"}},
+{wavfile:"Orthography_Stimulus_recording105111211.wav", prompttext: "<img src='rätt.jpg'></br>rätt", itemnumber: "56", itemdata: { subject_ID_number: subjectID, item_number: "56"}},
+{wavfile:"Orthography_Stimulus_recording105111311.wav", prompttext: "<img src='kväll.jpg'></br>kväll", itemnumber: "57", itemdata: { subject_ID_number: subjectID, item_number: "57"}},
+{wavfile:"Orthography_Stimulus_recording105121111.wav", prompttext: "<img src='håll.jpg'></br>håll", itemnumber: "58", itemdata: { subject_ID_number: subjectID, item_number: "58"}},
+{wavfile:"Orthography_Stimulus_recording105121211.wav", prompttext: "<img src='sång.jpg'></br>sång", itemnumber: "59", itemdata: { subject_ID_number: subjectID, item_number: "59"}},
+{wavfile:"Orthography_Stimulus_recording105121311.wav", prompttext: "<img src='påsk.jpg'></br>påsk", itemnumber: "60", itemdata: { subject_ID_number: subjectID, item_number: "60"}},
+{wavfile:"Orthography_Stimulus_recording105131111.wav", prompttext: "<img src='röst.jpg'></br>röst", itemnumber: "61", itemdata: { subject_ID_number: subjectID, item_number: "61"}},
+{wavfile:"Orthography_Stimulus_recording105131211.wav", prompttext: "<img src='öst.jpg'></br>öst", itemnumber: "62", itemdata: { subject_ID_number: subjectID, item_number: "62"}},
+{wavfile:"Orthography_Stimulus_recording105131311.wav", prompttext: "<img src='ört.jpg'></br>ört", itemnumber: "63", itemdata: { subject_ID_number: subjectID, item_number: "63"}},
+{wavfile:"Orthography_Stimulus_recording105211111.wav", prompttext: "<img src='län.jpg'></br>län", itemnumber: "64", itemdata: { subject_ID_number: subjectID, item_number: "64"}},
+{wavfile:"Orthography_Stimulus_recording105211211.wav", prompttext: "<img src='träd.jpg'></br>träd", itemnumber: "65", itemdata: { subject_ID_number: subjectID, item_number: "65"}},
+{wavfile:"Orthography_Stimulus_recording105211311.wav", prompttext: "<img src='kräm.jpg'></br>kräm", itemnumber: "66", itemdata: { subject_ID_number: subjectID, item_number: "66"}},
+{wavfile:"Orthography_Stimulus_recording105221111.wav", prompttext: "<img src='år.jpg'></br>år", itemnumber: "67", itemdata: { subject_ID_number: subjectID, item_number: "67"}},
+{wavfile:"Orthography_Stimulus_recording105221211.wav", prompttext: "<img src='mål.jpg'></br>mål", itemnumber: "68", itemdata: { subject_ID_number: subjectID, item_number: "68"}},
+{wavfile:"Orthography_Stimulus_recording105221311.wav", prompttext: "<img src='råd.jpg'></br>råd", itemnumber: "69", itemdata: { subject_ID_number: subjectID, item_number: "69"}},
+{wavfile:"Orthography_Stimulus_recording105231111.wav", prompttext: "<img src='stöd.jpg'></br>stöd", itemnumber: "70", itemdata: { subject_ID_number: subjectID, item_number: "70"}},
+{wavfile:"Orthography_Stimulus_recording105231211.wav", prompttext: "<img src='hörn.jpg'></br>hörn", itemnumber: "71", itemdata: { subject_ID_number: subjectID, item_number: "71"}},
+{wavfile:"Orthography_Stimulus_recording105231311.wav", prompttext: "<img src='öl.jpg'></br>öl", itemnumber: "72", itemdata: { subject_ID_number: subjectID, item_number: "72"}},
+{wavfile:"Orthography_Stimulus_recording106111111.wav", prompttext: "<img src='ägg.jpg'></br>ägg", itemnumber: "73", itemdata: { subject_ID_number: subjectID, item_number: "73"}},
+{wavfile:"Orthography_Stimulus_recording106111211.wav", prompttext: "<img src='rätt.jpg'></br>rätt", itemnumber: "74", itemdata: { subject_ID_number: subjectID, item_number: "74"}},
+{wavfile:"Orthography_Stimulus_recording106111311.wav", prompttext: "<img src='kväll.jpg'></br>kväll", itemnumber: "75", itemdata: { subject_ID_number: subjectID, item_number: "75"}},
+{wavfile:"Orthography_Stimulus_recording106121111.wav", prompttext: "<img src='håll.jpg'></br>håll", itemnumber: "76", itemdata: { subject_ID_number: subjectID, item_number: "76"}},
+{wavfile:"Orthography_Stimulus_recording106121211.wav", prompttext: "<img src='sång.jpg'></br>sång", itemnumber: "77", itemdata: { subject_ID_number: subjectID, item_number: "77"}},
+{wavfile:"Orthography_Stimulus_recording106121311.wav", prompttext: "<img src='påsk.jpg'></br>påsk", itemnumber: "78", itemdata: { subject_ID_number: subjectID, item_number: "78"}},
+{wavfile:"Orthography_Stimulus_recording106131111.wav", prompttext: "<img src='röst.jpg'></br>röst", itemnumber: "79", itemdata: { subject_ID_number: subjectID, item_number: "79"}},
+{wavfile:"Orthography_Stimulus_recording106131211.wav", prompttext: "<img src='öst.jpg'></br>öst", itemnumber: "80", itemdata: { subject_ID_number: subjectID, item_number: "80"}},
+{wavfile:"Orthography_Stimulus_recording106131311.wav", prompttext: "<img src='ört.jpg'></br>ört", itemnumber: "81", itemdata: { subject_ID_number: subjectID, item_number: "81"}},
+{wavfile:"Orthography_Stimulus_recording106211111.wav", prompttext: "<img src='län.jpg'></br>län", itemnumber: "82", itemdata: { subject_ID_number: subjectID, item_number: "82"}},
+{wavfile:"Orthography_Stimulus_recording106211211.wav", prompttext: "<img src='träd.jpg'></br>träd", itemnumber: "83", itemdata: { subject_ID_number: subjectID, item_number: "83"}},
+{wavfile:"Orthography_Stimulus_recording106211311.wav", prompttext: "<img src='kräm.jpg'></br>kräm", itemnumber: "84", itemdata: { subject_ID_number: subjectID, item_number: "84"}},
+{wavfile:"Orthography_Stimulus_recording106221111.wav", prompttext: "<img src='år.jpg'></br>år", itemnumber: "85", itemdata: { subject_ID_number: subjectID, item_number: "85"}},
+{wavfile:"Orthography_Stimulus_recording106221211.wav", prompttext: "<img src='mål.jpg'></br>mål", itemnumber: "86", itemdata: { subject_ID_number: subjectID, item_number: "86"}},
+{wavfile:"Orthography_Stimulus_recording106221311.wav", prompttext: "<img src='råd.jpg'></br>råd", itemnumber: "87", itemdata: { subject_ID_number: subjectID, item_number: "87"}},
+{wavfile:"Orthography_Stimulus_recording106231111.wav", prompttext: "<img src='stöd.jpg'></br>stöd", itemnumber: "88", itemdata: { subject_ID_number: subjectID, item_number: "88"}},
+{wavfile:"Orthography_Stimulus_recording106231211.wav", prompttext: "<img src='hörn.jpg'></br>hörn", itemnumber: "89", itemdata: { subject_ID_number: subjectID, item_number: "89"}},
+{wavfile:"Orthography_Stimulus_recording106231311.wav", prompttext: "<img src='öl.jpg'></br>öl", itemnumber: "90", itemdata: { subject_ID_number: subjectID, item_number: "90"}},
+	]
+};
+
+var learning_phase_test_instructions = {
+    type: "instructions",
+    pages: [
+        "Now you will take a test on the words that you learned.",
+        "For each item, you will see a picture.  You will also hear a recording of a native speaker of Swedish asking a question about the picture. The question asks whether you think the picture you see represents the meaning of a word.",
+		"If you think the answer to the question is 'no', press the NO key.  If you think the answer to the question is 'yes', press the YES key.",
+        "Remember, press NO to answer no to the question and press YES to answer yes to the question. Press Next to start the test."
+        ],
+    show_clickable_nav: true,
+    on_finish: function () {number_of_attempts_at_learning_phase++; console.log("learning_phase_instructions completed. number of attempts at learning phase" + number_of_attempts_at_learning_phase);}
+};
+
+var learning_phase_test_items = {
+	timeline: [
+	    {
+		    type: "html-keyboard-response",
+	        stimulus: " ",
+	        trial_duration: 500,
+	        response_ends_trial: false
+	    },
+	    {
+		    type: "audio-button-response",
+		    stimulus: jsPsych.timelineVariable("wavfile"),
+			choices: ["NO","YES"],
+		    prompt: jsPsych.timelineVariable("prompttext"),
+		    trial_duration: "3000",
+		    response_ends_trial: true,
+		    data: jsPsych.timelineVariable("itemdata"),
+			on_finish: function (data) {var is_this_trial_correct = false; if (data.response == 'y'  && data.rt > -1) { is_this_trial_correct = true; learning_phase_overall_score++;} jsPsych.data.addDataToLastTrial({correct: is_this_trial_correct});console.log("learning phase test item " + jsPsych.timelineVariable("itemnumber", true) + " complete");progressbarvalue = progressbarvalue + amounttoincrement; jsPsych.setProgressBar(progressbarvalue);}
+	    }	  
+	],
+	timeline_variables:
+	[
+{wavfile: "Orthography_Stimulus_recording105111121.wav", prompttext: "<img src='ägg.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "201"}, itemnumber: "201"},
+{wavfile: "Orthography_Stimulus_recording105111221.wav", prompttext: "<img src='rätt.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "202"}, itemnumber: "202"},
+{wavfile: "Orthography_Stimulus_recording106111321.wav", prompttext: "<img src='kväll.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "203"}, itemnumber: "203"},
+{wavfile: "Orthography_Stimulus_recording105121121.wav", prompttext: "<img src='håll.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "204"}, itemnumber: "204"},
+{wavfile: "Orthography_Stimulus_recording103121221.wav", prompttext: "<img src='sång.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "205"}, itemnumber: "205"},
+{wavfile: "Orthography_Stimulus_recording102121321.wav", prompttext: "<img src='påsk.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "206"}, itemnumber: "206"},
+{wavfile: "Orthography_Stimulus_recording102131121.wav", prompttext: "<img src='röst.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "207"}, itemnumber: "207"},
+{wavfile: "Orthography_Stimulus_recording103131221.wav", prompttext: "<img src='öst.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "208"}, itemnumber: "208"},
+{wavfile: "Orthography_Stimulus_recording103131321.wav", prompttext: "<img src='ört.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "209"}, itemnumber: "209"},
+{wavfile: "Orthography_Stimulus_recording105211121.wav", prompttext: "<img src='län.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "210"}, itemnumber: "210"},
+{wavfile: "Orthography_Stimulus_recording102211221.wav", prompttext: "<img src='träd.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "211"}, itemnumber: "211"},
+{wavfile: "Orthography_Stimulus_recording104211321.wav", prompttext: "<img src='kräm.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "212"}, itemnumber: "212"},
+{wavfile: "Orthography_Stimulus_recording105221121.wav", prompttext: "<img src='år.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "213"}, itemnumber: "213"},
+{wavfile: "Orthography_Stimulus_recording105221221.wav", prompttext: "<img src='mål.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "214"}, itemnumber: "214"},
+{wavfile: "Orthography_Stimulus_recording102221321.wav", prompttext: "<img src='råd.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "215"}, itemnumber: "215"},
+{wavfile: "Orthography_Stimulus_recording104231121.wav", prompttext: "<img src='stöd.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "216"}, itemnumber: "216"},
+{wavfile: "Orthography_Stimulus_recording106231221.wav", prompttext: "<img src='hörn.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "217"}, itemnumber: "217"},
+{wavfile: "Orthography_Stimulus_recording105231321.wav", prompttext: "<img src='öl.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "218"}, itemnumber: "218"},
+{wavfile: "Orthography_Stimulus_recording106211121.wav", prompttext: "<img src='ägg.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "219"}, itemnumber: "219"},
+{wavfile: "Orthography_Stimulus_recording103131321.wav", prompttext: "<img src='rätt.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "220"}, itemnumber: "220"},
+{wavfile: "Orthography_Stimulus_recording105111121.wav", prompttext: "<img src='kväll.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "221"}, itemnumber: "221"},
+{wavfile: "Orthography_Stimulus_recording104131221.wav", prompttext: "<img src='håll.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "222"}, itemnumber: "222"},
+{wavfile: "Orthography_Stimulus_recording106231121.wav", prompttext: "<img src='sång.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "223"}, itemnumber: "223"},
+{wavfile: "Orthography_Stimulus_recording102131121.wav", prompttext: "<img src='påsk.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "224"}, itemnumber: "224"},
+{wavfile: "Orthography_Stimulus_recording105121121.wav", prompttext: "<img src='röst.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "225"}, itemnumber: "225"},
+{wavfile: "Orthography_Stimulus_recording106121221.wav", prompttext: "<img src='öst.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "226"}, itemnumber: "226"},
+{wavfile: "Orthography_Stimulus_recording104231121.wav", prompttext: "<img src='ört.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "227"}, itemnumber: "227"},
+{wavfile: "Orthography_Stimulus_recording103221321.wav", prompttext: "<img src='län.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "228"}, itemnumber: "228"},
+{wavfile: "Orthography_Stimulus_recording106211121.wav", prompttext: "<img src='träd.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "229"}, itemnumber: "229"},
+{wavfile: "Orthography_Stimulus_recording102111221.wav", prompttext: "<img src='kräm.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "230"}, itemnumber: "230"},
+{wavfile: "Orthography_Stimulus_recording102121121.wav", prompttext: "<img src='år.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "231"}, itemnumber: "231"},
+{wavfile: "Orthography_Stimulus_recording105211121.wav", prompttext: "<img src='mål.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "232"}, itemnumber: "232"},
+{wavfile: "Orthography_Stimulus_recording106211121.wav", prompttext: "<img src='råd.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "233"}, itemnumber: "233"},
+{wavfile: "Orthography_Stimulus_recording104121321.wav", prompttext: "<img src='stöd.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "234"}, itemnumber: "234"},
+{wavfile: "Orthography_Stimulus_recording105221121.wav", prompttext: "<img src='hörn.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "235"}, itemnumber: "235"},
+{wavfile: "Orthography_Stimulus_recording105121321.wav", prompttext: "<img src='öl.jpg'>", itemdata: {subject_ID_number: subjectID, item_number: "236"}, itemnumber: "236"}
+	]
+};
+
+var take_a_break = {
+    type: "instructions",
+    pages: [
+        "Take a break for as long as you like.  Click the Next button when you are ready to continue."
+    ],
+    show_clickable_nav: true,
+	on_finish: function () {console.log("take_a_break completed");}
+};
+
+var production_test_items = {
+	timeline: [
+	{
+		type: "html-keyboard-response",
+		stimulus: "x",
+		trial_duration: 1000,
+		response_ends_trial: false
+	},
+	{
+		on_start: function() {
+			startRecording(); 
+			console.log("Recording started");
+		},
+		type: "image-keyboard-response",
+	    stimulus: jsPsych.timelineVariable("imagename"),
+	    trial_duration: 3000,
+	    response_ends_trial: false,
+		on_finish: function() {
+			item__number = jsPsych.timelineVariable("itemnumber", true);
+			filename = subjectID + item__number;
+			stopRecording();
+			console.log("production_test_item " + item__number + " completed");
+		}
+	}
+	],
+	randomize_order: false,
+	timeline_variables: [
+{imagename: "ägg.jpg", itemdata: {subject_ID_number: subjectID, item_number: "401"}, itemnumber: "401"},
+{imagename: "rätt.jpg", itemdata: {subject_ID_number: subjectID, item_number: "402"}, itemnumber: "402"},
+{imagename: "kväll.jpg", itemdata: {subject_ID_number: subjectID, item_number: "403"}, itemnumber: "403"},
+{imagename: "håll.jpg", itemdata: {subject_ID_number: subjectID, item_number: "404"}, itemnumber: "404"},
+{imagename: "sång.jpg", itemdata: {subject_ID_number: subjectID, item_number: "405"}, itemnumber: "405"},
+{imagename: "påsk.jpg", itemdata: {subject_ID_number: subjectID, item_number: "406"}, itemnumber: "406"},
+{imagename: "röst.jpg", itemdata: {subject_ID_number: subjectID, item_number: "407"}, itemnumber: "407"},
+{imagename: "öst.jpg", itemdata: {subject_ID_number: subjectID, item_number: "408"}, itemnumber: "408"},
+{imagename: "ört.jpg", itemdata: {subject_ID_number: subjectID, item_number: "409"}, itemnumber: "409"},
+{imagename: "län.jpg", itemdata: {subject_ID_number: subjectID, item_number: "410"}, itemnumber: "410"},
+{imagename: "träd.jpg", itemdata: {subject_ID_number: subjectID, item_number: "411"}, itemnumber: "411"},
+{imagename: "kräm.jpg", itemdata: {subject_ID_number: subjectID, item_number: "412"}, itemnumber: "412"},
+{imagename: "år.jpg", itemdata: {subject_ID_number: subjectID, item_number: "413"}, itemnumber: "413"},
+{imagename: "mål.jpg", itemdata: {subject_ID_number: subjectID, item_number: "414"}, itemnumber: "414"},
+{imagename: "råd.jpg", itemdata: {subject_ID_number: subjectID, item_number: "415"}, itemnumber: "415"},
+{imagename: "stöd.jpg", itemdata: {subject_ID_number: subjectID, item_number: "416"}, itemnumber: "416"},
+{imagename: "hörn.jpg", itemdata: {subject_ID_number: subjectID, item_number: "417"}, itemnumber: "417"},
+{imagename: "öl.jpg", itemdata: {subject_ID_number: subjectID, item_number: "418"}, itemnumber: "418"},
+{imagename: "ägg.jpg", itemdata: {subject_ID_number: subjectID, item_number: "419"}, itemnumber: "419"},
+{imagename: "rätt.jpg", itemdata: {subject_ID_number: subjectID, item_number: "420"}, itemnumber: "420"},
+{imagename: "kväll.jpg", itemdata: {subject_ID_number: subjectID, item_number: "421"}, itemnumber: "421"},
+{imagename: "håll.jpg", itemdata: {subject_ID_number: subjectID, item_number: "422"}, itemnumber: "422"},
+{imagename: "sång.jpg", itemdata: {subject_ID_number: subjectID, item_number: "423"}, itemnumber: "423"},
+{imagename: "påsk.jpg", itemdata: {subject_ID_number: subjectID, item_number: "424"}, itemnumber: "424"},
+{imagename: "röst.jpg", itemdata: {subject_ID_number: subjectID, item_number: "425"}, itemnumber: "425"},
+{imagename: "öst.jpg", itemdata: {subject_ID_number: subjectID, item_number: "426"}, itemnumber: "426"},
+{imagename: "ört.jpg", itemdata: {subject_ID_number: subjectID, item_number: "427"}, itemnumber: "427"},
+{imagename: "län.jpg", itemdata: {subject_ID_number: subjectID, item_number: "428"}, itemnumber: "428"},
+{imagename: "träd.jpg", itemdata: {subject_ID_number: subjectID, item_number: "429"}, itemnumber: "429"},
+{imagename: "kräm.jpg", itemdata: {subject_ID_number: subjectID, item_number: "430"}, itemnumber: "430"},
+{imagename: "år.jpg", itemdata: {subject_ID_number: subjectID, item_number: "431"}, itemnumber: "431"},
+{imagename: "mål.jpg", itemdata: {subject_ID_number: subjectID, item_number: "432"}, itemnumber: "432"},
+{imagename: "råd.jpg", itemdata: {subject_ID_number: subjectID, item_number: "433"}, itemnumber: "433"},
+{imagename: "stöd.jpg", itemdata: {subject_ID_number: subjectID, item_number: "434"}, itemnumber: "434"},
+{imagename: "hörn.jpg", itemdata: {subject_ID_number: subjectID, item_number: "435"}, itemnumber: "435"},
+{imagename: "öl.jpg", itemdata: {subject_ID_number: subjectID, item_number: "436"}, itemnumber: "436"}
+	]
+};
+
+var do_learning_phase = {
+	timeline: [learning_phase_instructions, learning_phase_items, learning_phase_test_instructions, learning_phase_test_items, take_a_break]
+}; //end of do_learning_phase
+
+var do_perception_test = {
+	timeline: [/*perception_test_instructions, perception_test_items,*/ take_a_break]
+};
+
+var do_production_test = {
+	timeline: [/*production_test_instructions, */production_test_items, take_a_break]
+};
+
+var do_survey ={
+    timeline: [/*survey_instructions, survey_items, long_form_survey_questions*/]
+};
+
+var start_the_experiment = {
+	timeline: [/*consent_instructions,*/ ask_for_consent, initialize_audio_instructions, initialize_audio, proceed_after_audio_initialization]
+};
+
+var consent_protected_timeline = {
+	timeline: [/*do_learning_phase, do_perception_test,*/ do_production_test/*, do_survey*/],
+	conditional_function: function () {
+		if (proceed_with_consent === true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+};
+
+var deinitialize_audio = {
+}
+
+var end_the_experiment = {
+	timeline: [/*save_the_data, finish_message*/]
+}; 
+
+jsPsych.init({
+	/*display_element: $('#jspsych-target'),*/
+    timeline: [start_the_experiment, consent_protected_timeline/*, end_the_experiment*/],
+	exclusions: {audio: true},
+	show_progress_bar: true,
+	auto_update_progress_bar: false
+});
+
+</script>
+</html>
